@@ -30,3 +30,4 @@ jobs:
           git add docs/index.html
           git diff --staged --quiet || git commit -m "chore: update daily AI brief"
           git push
+
