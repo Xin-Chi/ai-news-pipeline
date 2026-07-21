@@ -6,24 +6,29 @@ import urllib.parse
 ARXIV_API = "http://export.arxiv.org/api/query"
 CATEGORIES = ["cs.AI", "cs.CL", "cs.LG"]
 
-def fetch(limit: int = 10) -> list[dict]:
-    """回傳 [{title, url, source, abstract, id}],依最新提交排序。"""
-    cat_query = " OR ".join(f"cat:{c}" for c in CATEGORIES)
-    params = {
-        "search_query": cat_query,
-        "sortBy": "submittedDate",
-        "sortOrder": "descending",
-        "max_results": limit,
-    }
-    url = f"{ARXIV_API}?{urllib.parse.urlencode(params)}"
-    feed = feedparser.parse(url)
-    items: list[dict] = []
-    for e in feed.entries:
-        items.append({
-            "title": e.title.replace("\n", " ").strip(),
-            "url": e.link,
-            "source": "arXiv",
-            "abstract": e.summary.replace("\n", " ").strip(),
-            "id": e.id,
-        })
-    return items
+def fetch(limit: int = 10) -> tuple[list[dict], str | None]:
+    """回傳 (items, error)。items 依最新提交排序,error 為 None 代表抓取成功。"""
+    try:
+        cat_query = " OR ".join(f"cat:{c}" for c in CATEGORIES)
+        params = {
+            "search_query": cat_query,
+            "sortBy": "submittedDate",
+            "sortOrder": "descending",
+            "max_results": limit,
+        }
+        url = f"{ARXIV_API}?{urllib.parse.urlencode(params)}"
+        feed = feedparser.parse(url)
+        if feed.bozo and not feed.entries:
+            raise ValueError(str(feed.bozo_exception))
+        items: list[dict] = []
+        for e in feed.entries:
+            items.append({
+                "title": e.title.replace("\n", " ").strip(),
+                "url": e.link,
+                "source": "arXiv",
+                "abstract": e.summary.replace("\n", " ").strip(),
+                "id": e.id,
+            })
+        return items, None
+    except Exception as e:
+        return [], str(e)
