@@ -1,0 +1,4 @@
+requests>=2.31
+feedparser>=6.0
+# 語意去重(選用):把 dedup.py 的 USE_EMBEDDINGS 打開才需要
+# sentence-transformers>=3.0
