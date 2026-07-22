@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>每日 AI 快報 · 2026-07-22 09:51</title>
+<title>每日 AI 快報 · 2026-07-22 16:19</title>
 <style>
   :root {
     --bg:#0b0e14; --card:#151a24; --line:#242b3a;
@@ -29,8 +29,10 @@
   }
   .wrap { max-width:680px; margin:0 auto; padding:48px 20px 72px; }
   header { margin-bottom:20px; }
+  .title-row { display:flex; align-items:flex-end; justify-content:space-between; gap:10px; }
   header h1 { font-size:28px; margin:0 0 6px; letter-spacing:-0.01em; }
   header p { color:var(--muted); margin:0; font-size:14px; }
+  .hits-badge { height:14px; opacity:.7; }
   .source-alert { color:#ff6b6b; font-size:12.5px; margin:10px 0 0; }
   .filter-bar { display:grid; grid-template-columns:repeat(3, 1fr); gap:10px 12px; margin:20px 0 28px; }
   .filter-bar label {
@@ -42,6 +44,7 @@
   }
   .filter-bar input { display:none; }
   .filter-bar label.active { background:var(--accent); color:#0b0e14; border-color:var(--accent); }
+  .filter-bar label.disabled { opacity:.35; cursor:not-allowed; }
   @media (max-width: 480px) { .filter-bar label { font-size:11px; padding:8px 6px; } }
   .item {
     background:var(--card); border:1px solid var(--line);
@@ -49,10 +52,12 @@
     transition: transform .15s ease, box-shadow .15s ease;
   }
   .item:hover { transform:translateY(-2px); box-shadow:0 10px 26px rgba(0,0,0,0.32); }
+  .item-head { display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:9px; }
   .tag {
     display:inline-block; font-size:11.5px; font-weight:700;
-    padding:3px 10px; border-radius:999px; margin-bottom:9px;
+    padding:3px 10px; border-radius:999px;
   }
+  .item-time { font-size:11.5px; color:var(--muted); white-space:nowrap; }
   .item.openai .tag { color:var(--openai); background:var(--openai-bg); }
   .item.anthropic .tag { color:var(--anthropic); background:var(--anthropic-bg); }
   .item.deepmind .tag { color:var(--deepmind); background:var(--deepmind-bg); }
@@ -72,118 +77,134 @@
 <body>
 <div class="wrap">
   <header>
-    <h1>🗞️ 每日 AI 快報</h1>
-    <p>2026-07-22 09:51 · 共 20 則 · AI 自動生成</p>
+    <div class="title-row">
+      <h1>🗞️ 每日 AI 快報</h1>
+      <img class="hits-badge" src="https://hits.sh/xin-chi.github.io/ai-news-pipeline/2026-07-22.svg?style=flat-square&label=%F0%9F%91%80&color=242b3a&labelColor=151a24" alt="瀏覽次數" onerror="this.style.display='none'">
+    </div>
+    <p>蒐集當日來自三大 AI 科技報導、社群討論、中文科技新聞與 AI 學術文獻的最新動態,自動摘要每日更新</p>
+    <p>2026-07-22 16:19 · 共 14 則</p>
     
   </header>
   <div class="filter-bar" id="filterBar"><label><input type="checkbox" value="openai"> OpenAI Blog</label>
-<label><input type="checkbox" value="anthropic"> Anthropic Blog</label>
+<label class="disabled" title="過去 24 小時內沒有新內容"><input type="checkbox" value="anthropic" disabled> Anthropic Blog</label>
 <label><input type="checkbox" value="deepmind"> Google DeepMind</label>
-<label><input type="checkbox" value="ithome"> iThome</label>
+<label class="disabled" title="過去 24 小時內沒有新內容"><input type="checkbox" value="ithome" disabled> iThome</label>
 <label><input type="checkbox" value="technews"> TechNews</label>
 <label><input type="checkbox" value="inside"> INSIDE</label>
 <label><input type="checkbox" value="hn"> Hacker News</label>
 <label><input type="checkbox" value="hf"> Hugging Face</label>
 <label><input type="checkbox" value="arxiv"> arXiv</label></div>
   <article class="item openai">
-  <span class="tag">OpenAI Blog</span>
+  <div class="item-head">
+    <span class="tag">OpenAI Blog</span>
+    <span class="item-time">07/22 01:00</span>
+  </div>
   <h2><a href="https://openai.com/index/introducing-chatgpt-small-business-program" target="_blank" rel="noopener">Introducing the ChatGPT for small business program</a></h2>
   <p>OpenAI 推出小型企業計畫，協助創業者運用 ChatGPT 提升技能、自動化工作並促進成長。</p>
 </article>
-<article class="item openai">
-  <span class="tag">OpenAI Blog</span>
-  <h2><a href="https://openai.com/index/hugging-face-model-evaluation-security-incident" target="_blank" rel="noopener">OpenAI and Hugging Face partner to address security incident during model evaluation</a></h2>
-  <p>OpenAI 與 Hugging Face 分享模型評估期間的安全事件調查結果，並強調防禦經驗。</p>
-</article>
-<article class="item openai">
-  <span class="tag">OpenAI Blog</span>
-  <h2><a href="https://openai.com/index/david-velez-robin-vince-join-openai-boards" target="_blank" rel="noopener">David Vélez and Robin Vince join the boards of the OpenAI Foundation and OpenAI Group PBC</a></h2>
-  <p>David Vélez 與 Robin Vince 加入 OpenAI 基金會及集團董事會。</p>
-</article>
-<article class="item openai">
-  <span class="tag">OpenAI Blog</span>
-  <h2><a href="https://openai.com/index/safety-alignment-long-horizon-models" target="_blank" rel="noopener">Safety and alignment in an era of long-horizon models</a></h2>
-  <p>OpenAI 分享長期運行 AI 模型的部署經驗，強調新安全風險並透過迭代部署強化防護。</p>
-</article>
-<article class="item openai">
-  <span class="tag">OpenAI Blog</span>
-  <h2><a href="https://openai.com/index/a-scorecard-for-the-ai-age" target="_blank" rel="noopener">A scorecard for the AI age</a></h2>
-  <p>OpenAI 財務長 Sarah Friar 提出 AI 成效評分表，以衡量投資報酬率與運算效益。</p>
-</article>
-<article class="item anthropic">
-  <span class="tag">Anthropic Blog</span>
-  <h2><a href="https://claude.com/blog/working-at-the-frontier-rakuten" target="_blank" rel="noopener">Working at the frontier: How Rakuten builds agents overnight with Claude Fable 5</a></h2>
-  <p>樂天導入 Claude 模型，透過高自主性的 AI 代理執行複雜任務，加速軟體開發並推動企業 AI 化。</p>
-</article>
-<article class="item anthropic">
-  <span class="tag">Anthropic Blog</span>
-  <h2><a href="https://claude.com/blog/ciso-guide-to-agentic-ai" target="_blank" rel="noopener">Zero risk isn&#x27;t the job: a CISO&#x27;s guide to agentic AI</a></h2>
-  <p>資安長應將代理式 AI 風險透明化並設限，而非追求零風險，以在可控範圍內推動業務發展。</p>
-</article>
-<article class="item anthropic">
-  <span class="tag">Anthropic Blog</span>
-  <h2><a href="https://claude.com/blog/working-at-the-frontier-cursor" target="_blank" rel="noopener">Working at the frontier: How Cursor knew Claude Fable 5 was ready for the hardest 1% of problems</a></h2>
-  <p>Cursor 透過自建評測系統 CursorBench 測試，發現 Claude Fable 5 在處理複雜程式任務上表現優異，創下 72.9% 的新高分。</p>
-</article>
-<article class="item anthropic">
-  <span class="tag">Anthropic Blog</span>
-  <h2><a href="https://claude.com/blog/working-with-claude-fable-5-in-claude-cowork" target="_blank" rel="noopener">Working with Claude Fable 5 in Claude Cowork</a></h2>
-  <p>Claude Fable 5 擅長處理複雜且長期的多步驟任務，能像同事般獨立完成工作並自我評估。</p>
-</article>
-<article class="item anthropic">
-  <span class="tag">Anthropic Blog</span>
-  <h2><a href="https://claude.com/blog/ai-code-migration" target="_blank" rel="noopener">How Anthropic runs large-scale code migrations with Claude Code</a></h2>
-  <p>Anthropic 利用 Claude Code 透過優化流程，大幅縮短大規模程式語言遷移的開發時程。</p>
-</article>
 <article class="item deepmind">
-  <span class="tag">Google DeepMind</span>
+  <div class="item-head">
+    <span class="tag">Google DeepMind</span>
+    <span class="item-time">07/21 23:16</span>
+  </div>
   <h2><a href="https://deepmind.google/blog/introducing-gemini-36-flash-35-flash-lite-and-35-flash-cyber/" target="_blank" rel="noopener">Introducing Gemini 3.6 Flash, 3.5 Flash-Lite, and 3.5 Flash Cyber</a></h2>
   <p>Google 推出 Gemini 3.6 Flash、3.5 Flash-Lite 及 3.5 Flash Cyber 三款新模型。</p>
 </article>
-<article class="item deepmind">
-  <span class="tag">Google DeepMind</span>
-  <h2><a href="https://deepmind.google/blog/introducing-gemini-3-5-flash-cyber/" target="_blank" rel="noopener">Introducing Gemini 3.5 Flash Cyber</a></h2>
-  <p>Google 推出輕量級網路安全模型 Gemini 3.5 Flash Cyber，旨在協助偵測並修補漏洞。</p>
-</article>
-<article class="item deepmind">
-  <span class="tag">Google DeepMind</span>
-  <h2><a href="https://deepmind.google/blog/our-approach-to-bioresilience/" target="_blank" rel="noopener">Our approach to bioresilience</a></h2>
-  <p>Google DeepMind 與 Isomorphic Labs 共同分享其生物韌性與 AI 模型的研究方法。</p>
-</article>
-<article class="item deepmind">
-  <span class="tag">Google DeepMind</span>
-  <h2><a href="https://deepmind.google/blog/empowering-indias-next-generation-of-innovators-with-atl-saathi/" target="_blank" rel="noopener">Empowering India’s next generation of innovators with ATL Saathi</a></h2>
-  <p>Google 與 AIM 合作推出 Gemini 驅動的 AI 工具 ATL Saathi，協助印度教育工作者進行機器人教學。</p>
-</article>
-<article class="item ithome">
-  <span class="tag">iThome</span>
-  <h2><a href="https://www.ithome.com.tw/news/177460" target="_blank" rel="noopener">AI趨勢周報第290期：Bun創辦人用AI重寫53萬行程式碼，11天搞定</a></h2>
-  <p>AI趨勢周報第290期：Bun創辦人用AI重寫53萬行程式碼，11天搞定</p>
-</article>
 <article class="item technews">
-  <span class="tag">TechNews</span>
+  <div class="item-head">
+    <span class="tag">TechNews</span>
+    <span class="item-time">07/21 19:14</span>
+  </div>
   <h2><a href="https://technews.tw/2026/07/21/jacobian-conjecture-claude-math-problem/" target="_blank" rel="noopener">數學界天翻地覆，代數幾何 87 年懸案「雅可比猜想」遭 Claude 證偽</a></h2>
   <p>AI 模型 Claude 成功證偽數學界懸宕 87 年的「雅可比猜想」。</p>
 </article>
+<article class="item technews">
+  <div class="item-head">
+    <span class="tag">TechNews</span>
+    <span class="item-time">07/21 17:40</span>
+  </div>
+  <h2><a href="https://technews.tw/2026/07/21/uk-media-china-considers-restricting-ai-models-semiconductor-technology-exports/" target="_blank" rel="noopener">英媒：中國考慮限制 AI 模型和半導體技術出口</a></h2>
+  <p>英媒報導，中國政府正考慮收緊人工智慧與半導體技術出口管制。</p>
+</article>
 <article class="item inside">
-  <span class="tag">INSIDE</span>
-  <h2><a href="https://www.inside.com.tw/article/41875-check-point-engage-2026-keynote" target="_blank" rel="noopener">當攻擊快到人類來不及反應，防禦也必須交給 AI！Check Point 技術長揭露 AI 原生防火牆與代理人編排藍圖</a></h2>
-  <p>當攻擊快到人類來不及反應，防禦也必須交給 AI！Check Point 技術長揭露 AI 原生防火牆與代理人編排藍圖</p>
+  <div class="item-head">
+    <span class="tag">INSIDE</span>
+    <span class="item-time">07/22 15:49</span>
+  </div>
+  <h2><a href="https://www.inside.com.tw/article/41885-anthropic-1-5b-copyright-settlement-approved" target="_blank" rel="noopener">史上最大著作權和解拍板！Anthropic 15 億美元收場，AI 訓練資料合法邊界成形</a></h2>
+  <p>Anthropic 以 15 億美元達成著作權和解，確立 AI 訓練雖可主張合理使用，但使用盜版資料仍屬違法。</p>
+</article>
+<article class="item inside">
+  <div class="item-head">
+    <span class="tag">INSIDE</span>
+    <span class="item-time">07/22 14:38</span>
+  </div>
+  <h2><a href="https://www.inside.com.tw/article/41883-rplus-1gw-idaho-solar-real-customer-is-meta" target="_blank" rel="noopener">rPlus 這 1 GW 太陽能場，背後的真正客戶只有 Meta</a></h2>
+  <p>rPlus 在愛達荷州建置 1GW 太陽能場，專供 Meta 資料中心使用。</p>
 </article>
 <article class="item hn">
-  <span class="tag">Hacker News</span>
+  <div class="item-head">
+    <span class="tag">Hacker News</span>
+    <span class="item-time">07/22 04:09</span>
+  </div>
+  <h2><a href="https://openai.com/index/hugging-face-model-evaluation-security-incident/" target="_blank" rel="noopener">OpenAI and Hugging Face address security incident during model evaluation</a></h2>
+  <p>OpenAI 與 Hugging Face 針對模型評估期間發生的安全事件進行處理。</p>
+</article>
+<article class="item hn">
+  <div class="item-head">
+    <span class="tag">Hacker News</span>
+    <span class="item-time">07/22 02:58</span>
+  </div>
   <h2><a href="https://ads.openai.com/" target="_blank" rel="noopener">Advertise in ChatGPT</a></h2>
-  <p>Advertise in ChatGPT</p>
+  <p>OpenAI 正在探索於 ChatGPT 中加入廣告的可能性。</p>
+</article>
+<article class="item hn">
+  <div class="item-head">
+    <span class="tag">Hacker News</span>
+    <span class="item-time">07/22 03:04</span>
+  </div>
+  <h2><a href="https://apnews.com/article/ai-anthropic-copyright-settlement-claude-books-bartz-74b140444023898aeba8579b6e9f0d63" target="_blank" rel="noopener">Judge approves $1.5B Anthropic settlement for pirated books used to train Claude</a></h2>
+  <p>法院批准 Anthropic 因使用盜版書籍訓練 Claude 而需支付 15 億美元和解金。</p>
+</article>
+<article class="item hn">
+  <div class="item-head">
+    <span class="tag">Hacker News</span>
+    <span class="item-time">07/22 13:39</span>
+  </div>
+  <h2><a href="https://openaim.pramit.gg/" target="_blank" rel="noopener">Show HN: A new kind of FPS aim trainer</a></h2>
+  <p>開發者發布了一款新型態的 FPS 射擊遊戲瞄準訓練器。</p>
+</article>
+<article class="item hn">
+  <div class="item-head">
+    <span class="tag">Hacker News</span>
+    <span class="item-time">07/22 01:14</span>
+  </div>
+  <h2><a href="https://runtimewire.com/article/jack-dorsey-block-buzz-team-chat-ai-agents-git" target="_blank" rel="noopener">Jack Dorsey launches Buzz to combine team chat, AI agents and Git hosting</a></h2>
+  <p>Jack Dorsey 推出 Buzz 平台，整合團隊通訊、AI 代理與 Git 託管功能。</p>
 </article>
 <article class="item hf">
-  <span class="tag">Hugging Face</span>
+  <div class="item-head">
+    <span class="tag">Hugging Face</span>
+    <span class="item-time">07/22 04:00</span>
+  </div>
   <h2><a href="https://huggingface.co/blog/nvidia/state-of-simulation-for-physical-ai" target="_blank" rel="noopener">The State of Simulation for Physical AI: An Overview</a></h2>
-  <p>The State of Simulation for Physical AI: An Overview</p>
+  <p>本文概述物理人工智慧領域中模擬技術的現況。</p>
 </article>
 <article class="item arxiv">
-  <span class="tag">arXiv</span>
-  <h2><a href="https://arxiv.org/abs/2607.18237v1" target="_blank" rel="noopener">The Many Senses of Visual Similarity: A Text-Prompted Image Perceptual Metric</a></h2>
-  <p>The Many Senses of Visual Similarity: A Text-Prompted Image Perceptual Metric</p>
+  <div class="item-head">
+    <span class="tag">arXiv</span>
+    <span class="item-time">07/22 01:59</span>
+  </div>
+  <h2><a href="https://arxiv.org/abs/2607.19345v1" target="_blank" rel="noopener">Copy Less, Ground More: Overcoming Repetitive Copying in Long-Context Reasoning via Evidence-Aware Reinforcement Learning</a></h2>
+  <p>研究提出 GEAR 強化學習方法，透過獎勵機制改善長文本模型過度複製輸入內容的問題，提升推理準確度。</p>
+</article>
+<article class="item arxiv">
+  <div class="item-head">
+    <span class="tag">arXiv</span>
+    <span class="item-time">07/22 01:59</span>
+  </div>
+  <h2><a href="https://arxiv.org/abs/2607.19344v1" target="_blank" rel="noopener">Appearance Pointers -- Multimodal Region Control of Diffusion Transformers</a></h2>
+  <p>新提出的 Appearance Pointers 技術，能讓擴散模型在不需重新訓練下，實現精準的區域多模態影像控制。</p>
 </article>
   <footer>由自動化 pipeline 每日生成 · 摘要僅依原文,連結直達原始出處</footer>
 </div>
