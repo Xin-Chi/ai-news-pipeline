@@ -2,6 +2,7 @@
 回傳格式跟其他 fetcher 一致:(items, error)。抓取失敗(網路、feed 格式壞掉)
 不會丟例外,error 帶回原因,讓 main.py 決定要不要在頁面上顯示「來源異常」。
 """
+import calendar
 import re
 import feedparser
 import requests
@@ -35,12 +36,14 @@ def fetch(
         abstract = _strip_html(getattr(e, "summary", ""))
         if ai_only and not looks_ai(f"{title} {abstract}"):
             continue
+        parsed = getattr(e, "published_parsed", None) or getattr(e, "updated_parsed", None)
         items.append({
             "title": title,
             "url": getattr(e, "link", ""),
             "source": source,
             "abstract": abstract,
             "id": getattr(e, "id", getattr(e, "link", "")),
+            "published": calendar.timegm(parsed) if parsed else None,
         })
         if len(items) >= limit:
             break

@@ -1,9 +1,11 @@
 name: daily-ai-brief
 
-# 每天台灣時間早上 8 點跑(UTC 00:00),也可手動觸發。
+# 目標台灣時間 6:30 觸發(UTC 前一天 22:30),也可手動觸發。
+# GitHub Actions 的 schedule 不保證準時,實際觸發常常會晚 1~2 小時,
+# 排早一點是為了讓延遲後的實際完成時間仍落在 8 點附近。
 on:
   schedule:
-    - cron: "0 0 * * *"
+    - cron: "30 22 * * *"
   workflow_dispatch:
 
 permissions:

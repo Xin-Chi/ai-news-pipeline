@@ -1,5 +1,6 @@
 """從 arXiv API 抓當日 AI 論文。cs.AI/cs.CL/cs.LG 涵蓋大多數 AI 論文,
 論文自帶 abstract,直接是很好的摘要輸入。"""
+import calendar
 import feedparser
 import urllib.parse
 
@@ -22,12 +23,14 @@ def fetch(limit: int = 10) -> tuple[list[dict], str | None]:
             raise ValueError(str(feed.bozo_exception))
         items: list[dict] = []
         for e in feed.entries:
+            published = calendar.timegm(e.published_parsed) if getattr(e, "published_parsed", None) else None
             items.append({
                 "title": e.title.replace("\n", " ").strip(),
                 "url": e.link,
                 "source": "arXiv",
                 "abstract": e.summary.replace("\n", " ").strip(),
                 "id": e.id,
+                "published": published,
             })
         return items, None
     except Exception as e:

@@ -4,9 +4,11 @@
 3. 來源 URL 在程式碼綁死(見 main.py),不讓模型碰。
 預設 Gemini Flash-Lite;換模型只改 _call_llm。--mock 不呼叫 LLM。"""
 import os
+import time
 import requests
 
 MODEL = "gemini-3.1-flash-lite"
+RATE_LIMIT_DELAY = 4.5  # 免費方案 15 RPM 上限(60/15=4 秒),抓 4.5 秒留安全margin
 GEMINI_URL = f"https://generativelanguage.googleapis.com/v1beta/models/{MODEL}:generateContent"
 SYSTEM = ("你是 AI 新聞摘要助理。只根據使用者提供的標題與內文,用繁體中文寫一句話"
           "(最多 40 字)的重點摘要。嚴禁補充提供內容以外的資訊或臆測。只回傳純文字。")
@@ -43,4 +45,9 @@ def summarize(item: dict, mock: bool = False) -> dict:
     return item
 
 def summarize_all(items: list, mock: bool = False) -> list:
-    return [summarize(it, mock=mock) for it in items]
+    result = []
+    for i, it in enumerate(items):
+        if not mock and i > 0:
+            time.sleep(RATE_LIMIT_DELAY)
+        result.append(summarize(it, mock=mock))
+    return result

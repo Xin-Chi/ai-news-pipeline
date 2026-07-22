@@ -29,6 +29,7 @@ def fetch(limit: int = 15, scan: int = 100, timeout: int = 10) -> tuple[list[dic
                 "source": "Hacker News",
                 "score": story.get("score", 0),
                 "id": f"hn-{sid}",
+                "published": story.get("time"),  # HN API 給的就是 Unix epoch(UTC)
             })
             if len(items) >= limit:
                 break

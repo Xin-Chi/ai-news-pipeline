@@ -6,12 +6,14 @@
 用法:python main.py  /  python main.py --mock(不呼叫 LLM 測流程)"""
 import os
 import sys
+import time
 from pathlib import Path
 from fetchers import hackernews, arxiv, rss_source
 from stages import dedup, summarize, render
 
 TOP_N = 20
 FLOOR_PER_SOURCE = 1  # 每個來源保底名額,避免排前面的來源當天發太多把後面擠到 0 篇
+RECENCY_WINDOW = 24 * 3600  # 只留過去 24 小時內發布的,不是「今天」而是「這一天以來」
 
 # 依優先順序:(顯示名稱, 保底後的名額上限, 抓取函式)
 # 官方 blog 用 RSS,沒有 HN 那種讚數可比,依發文時間新舊排序(rss_source 已處理)。
@@ -56,6 +58,16 @@ def _fetch_all() -> tuple[dict, list[str]]:
     return by_source, broken
 
 
+def _filter_recent(by_source: dict) -> dict:
+    """只留過去 24 小時內發布的文章。沒有 published 時間的(理論上不該發生,
+    但防禦性處理)一律當作過舊排除,不冒險把不確定日期的東西當新聞。"""
+    cutoff = time.time() - RECENCY_WINDOW
+    return {
+        label: [it for it in items if it.get("published") and it["published"] >= cutoff]
+        for label, items in by_source.items()
+    }
+
+
 def _select(by_source: dict) -> list[dict]:
     """保底 + 優先順序遞補:每個來源先保底 FLOOR_PER_SOURCE 篇,
     剩下名額依 SOURCES 的順序、依各自上限去搶,湊到 TOP_N 就停。"""
@@ -79,6 +91,9 @@ def run(mock: bool = False) -> str:
     by_source, broken = _fetch_all()
     total_fetched = sum(len(v) for v in by_source.values())
     print(f"[fetch] {total_fetched} items from {len(SOURCES)} sources")
+
+    by_source = _filter_recent(by_source)
+    print(f"[recency] {sum(len(v) for v in by_source.values())} items within {RECENCY_WINDOW // 3600}h")
 
     # 去重要看跨來源的重複(例如同一則新聞被兩個中文站都報),所以先攤平去重,
     # 再依原本的來源分組還原,交給 _select 做保底+優先順序選稿。
