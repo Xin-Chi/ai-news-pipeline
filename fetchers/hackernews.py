@@ -33,6 +33,7 @@ def fetch(limit: int = 15, scan: int = 100, timeout: int = 10) -> tuple[list[dic
             })
             if len(items) >= limit:
                 break
+        items.sort(key=lambda it: it["score"], reverse=True)
         return items, None
     except Exception as e:
         return [], str(e)
