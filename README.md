@@ -18,7 +18,7 @@
 | 4 | iThome | AI 分類 RSS,另加關鍵字過濾雙重保險 |
 | 5 | TechNews 科技新報 | AI 分類 RSS,另加關鍵字過濾雙重保險 |
 | 6 | INSIDE | 綜合 RSS(無 AI 分類),用關鍵字過濾 |
-| 7 | Hacker News | 官方 API,upvote 排序 |
+| 7 | Hacker News | 官方 API,依 upvote 分數明確排序後取前幾名 |
 | 8 | Hugging Face Blog | 官方 RSS |
 | 9 | arXiv | 官方 API(cs.AI / cs.CL / cs.LG) |
 
@@ -37,6 +37,12 @@
   pipeline 失敗,只會在頁面顯示小紅字提示——區分「今天沒發文」(正常)跟
   「抓取本身出錯」(異常)這兩種情況。
 - **去重**:輕量詞彙相似度(Jaccard),標題切詞後比重疊比例。
+- **AI 關鍵字比對用完整單字,不是子字串**:英文關鍵字(`ai`、`agent`……)用
+  regex word boundary 比對,避免像 "Taiwan"、"email" 這類字裡剛好包含 "ai"
+  被誤判成 AI 相關(踩過這個坑:INSIDE 曾經抓到一篇跟 AI 無關的 UBI 實驗
+  報導,就是因為摘要裡的 "Taiwan" 觸發子字串誤判)。中文關鍵字沒有這個風險,
+  維持子字串比對。iThome/TechNews/INSIDE 三個中文站、以及 Hacker News 標題
+  篩選共用同一套關鍵字邏輯(`fetchers/keywords.py`)。
 - **降低摘要幻覺風險(靠設計,非事後驗證)**:逐篇餵給 LLM(不會把多篇文章
   一次塞給它混淆);prompt 明文禁止臆測;來源 URL 在程式碼裡綁死、從不進入
   LLM,杜絕張冠李戴。這三個都是預防性的工程作法,沒有額外的步驟去事後驗證
