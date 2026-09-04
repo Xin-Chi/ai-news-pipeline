@@ -42,5 +42,6 @@ def fetch(limit: int = 10) -> tuple[list[dict], str | None]:
         except Exception as e:
             last_error = str(e)
             if attempt < MAX_ATTEMPTS - 1:
+                print(f"[warn] arXiv 第 {attempt + 1} 次抓取失敗,{RETRY_DELAY} 秒後重試: {last_error}")
                 time.sleep(RETRY_DELAY)
     return [], last_error
