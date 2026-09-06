@@ -33,6 +33,15 @@ SOURCES = [
 ]
 
 
+def _load_announcement() -> str:
+    """讀專案根目錄的 announcement.txt 當作偶爾寫給讀者的公告,
+    檔案不存在或整篇是空白就回傳空字串(頁面上不會顯示任何東西)。"""
+    path = Path(__file__).parent / "announcement.txt"
+    if not path.exists():
+        return ""
+    return path.read_text(encoding="utf-8").strip()
+
+
 def _load_dotenv() -> None:
     """從專案根目錄的 .env 讀 KEY=VALUE,設進 os.environ(不覆蓋既有的)。"""
     env_path = Path(__file__).parent / ".env"
@@ -107,7 +116,8 @@ def run(mock: bool = False) -> str:
     print(f"[select] {len(items)} items chosen (target {TOP_N})")
 
     items = summarize.summarize_all(items, mock=mock)
-    path = render.render(items, broken_sources=broken)
+    announcement = _load_announcement()
+    path = render.render(items, broken_sources=broken, announcement=announcement)
     print(f"[render] wrote {path}")
     return path
 

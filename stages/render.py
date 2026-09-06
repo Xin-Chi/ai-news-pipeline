@@ -55,6 +55,11 @@ PAGE = """<!DOCTYPE html>
   .filter-bar label.active {{ background:var(--accent); color:#0b0e14; border-color:var(--accent); }}
   .filter-bar label.disabled {{ opacity:.35; cursor:not-allowed; }}
   @media (max-width: 480px) {{ .filter-bar label {{ font-size:11px; padding:8px 6px; }} }}
+  .announcement {{
+    background:rgba(255,181,107,0.09); border:1px solid rgba(255,181,107,0.28);
+    border-radius:12px; padding:14px 16px; margin:0 0 20px;
+    font-size:14px; line-height:1.6; color:var(--text);
+  }}
   .item {{
     background:var(--card); border:1px solid var(--line);
     border-radius:16px; padding:18px 20px; margin-bottom:14px;
@@ -95,6 +100,7 @@ PAGE = """<!DOCTYPE html>
     {broken_notice}
   </header>
   <div class="filter-bar" id="filterBar">{filter_checkboxes}</div>
+  {announcement_html}
   {cards}
   <footer>由自動化 pipeline 每日生成 · 摘要僅依原文,連結直達原始出處</footer>
 </div>
@@ -135,7 +141,7 @@ SOURCE_SLUG = [pair for row in SOURCE_ROWS for pair in row]
 SOURCE_SLUG_MAP = dict(SOURCE_SLUG)
 
 
-def render(items: list, broken_sources: list | None = None) -> str:
+def render(items: list, broken_sources: list | None = None, announcement: str = "") -> str:
     now_dt = datetime.now(TW)
     now = now_dt.strftime("%Y-%m-%d %H:%M")
     hits_key = now_dt.strftime("%Y-%m-%d")  # 用日期當計數器 key,換一天等於自動歸零
@@ -161,10 +167,16 @@ def render(items: list, broken_sources: list | None = None) -> str:
         names = "、".join(html.escape(s) for s in broken_sources)
         broken_notice = f'<p class="source-alert">⚠️ {names} 來源目前抓取異常,暫時沒有更新</p>'
 
+    announcement_html = ""
+    if announcement:
+        escaped = html.escape(announcement).replace("\n", "<br>")
+        announcement_html = f'<div class="announcement">📣 {escaped}</div>'
+
     DOCS.mkdir(exist_ok=True)
     page = PAGE.format(
         date=now, count=len(items), cards=cards, hits_key=hits_key,
         filter_checkboxes=filter_checkboxes, broken_notice=broken_notice,
+        announcement_html=announcement_html,
     )
     (DOCS / "index.html").write_text(page, encoding="utf-8")
     return str(DOCS / "index.html")
