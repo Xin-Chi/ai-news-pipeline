@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>每日 AI 快報 · 2026-09-06 14:33</title>
+<title>每日 AI 快報 · 2026-09-07 08:15</title>
 <style>
   :root {
     --bg:#0b0e14; --card:#151a24; --line:#242b3a;
@@ -45,12 +45,12 @@
   .filter-bar input { display:none; }
   .filter-bar label.active { background:var(--accent); color:#0b0e14; border-color:var(--accent); }
   .filter-bar label.disabled { opacity:.35; cursor:not-allowed; }
+  @media (max-width: 480px) { .filter-bar label { font-size:11px; padding:8px 6px; } }
   .announcement {
     background:rgba(255,181,107,0.09); border:1px solid rgba(255,181,107,0.28);
     border-radius:12px; padding:14px 16px; margin:0 0 20px;
     font-size:14px; line-height:1.6; color:var(--text);
   }
-  @media (max-width: 480px) { .filter-bar label { font-size:11px; padding:8px 6px; } }
   .item {
     background:var(--card); border:1px solid var(--line);
     border-radius:16px; padding:18px 20px; margin-bottom:14px;
@@ -84,165 +84,77 @@
   <header>
     <div class="title-row">
       <h1>🗞️ 每日 AI 快報</h1>
-      <img class="hits-badge" src="https://hits.sh/xin-chi.github.io/ai-news-pipeline/2026-09-06.svg?style=flat-square&label=%F0%9F%91%80&color=242b3a&labelColor=151a24" alt="瀏覽次數" onerror="this.style.display='none'">
+      <img class="hits-badge" src="https://hits.sh/xin-chi.github.io/ai-news-pipeline/2026-09-07.svg?style=flat-square&label=%F0%9F%91%80&color=242b3a&labelColor=151a24" alt="瀏覽次數" onerror="this.style.display='none'">
     </div>
     <p>蒐集當日來自三大 AI 科技報導、社群討論、中文科技新聞與 AI 學術文獻的最新動態,自動摘要每日更新</p>
-    <p>2026-09-06 14:33 · 共 18 則</p>
+    <p>2026-09-07 08:15 · 共 7 則</p>
     
   </header>
   <div class="filter-bar" id="filterBar"><label><input type="checkbox" value="openai"> OpenAI Blog</label>
 <label class="disabled" title="過去 24 小時內沒有新內容"><input type="checkbox" value="anthropic" disabled> Anthropic Blog</label>
-<label><input type="checkbox" value="deepmind"> Google DeepMind</label>
+<label class="disabled" title="過去 24 小時內沒有新內容"><input type="checkbox" value="deepmind" disabled> Google DeepMind</label>
 <label class="disabled" title="過去 24 小時內沒有新內容"><input type="checkbox" value="ithome" disabled> iThome</label>
-<label><input type="checkbox" value="technews"> TechNews</label>
+<label class="disabled" title="過去 24 小時內沒有新內容"><input type="checkbox" value="technews" disabled> TechNews</label>
 <label><input type="checkbox" value="inside"> INSIDE</label>
 <label><input type="checkbox" value="hn"> Hacker News</label>
-<label><input type="checkbox" value="hf"> Hugging Face</label>
-<label><input type="checkbox" value="arxiv"> arXiv</label></div>
-  <div class="announcement">📣 由於前幾天在面試,沒看到 GPT-6 文章,今天特別拉長時間寬限成 80 小時,一起看 GPT-6 吧!😊</div>
+<label class="disabled" title="過去 24 小時內沒有新內容"><input type="checkbox" value="hf" disabled> Hugging Face</label>
+<label class="disabled" title="過去 24 小時內沒有新內容"><input type="checkbox" value="arxiv" disabled> arXiv</label></div>
+  <div class="announcement">📣 由於前幾天在面試，沒看到 GPT-6 文章，今天特別拉長時間寬限成 80 小時，一起看 GPT-6 吧！😊</div>
   <article class="item openai">
   <div class="item-head">
     <span class="tag">OpenAI Blog</span>
-    <span class="item-time">09/03 21:15</span>
+    <span class="item-time">09/06 17:00</span>
   </div>
-  <h2><a href="https://openai.com/index/daybreak-for-frontline-defenders" target="_blank" rel="noopener">Daybreak for Frontline Defenders: $1B to protect essential services</a></h2>
-  <p>OpenAI 啟動 10 億美元計畫，為關鍵服務提供前沿網路 AI 技術、培訓與支援。</p>
+  <h2><a href="https://openai.com/index/an-alien-mind" target="_blank" rel="noopener">An Alien Mind</a></h2>
+  <p>Jakub Pachocki 呼籲加強 AI 安全防護並建立國際協調機制。</p>
 </article>
 <article class="item openai">
   <div class="item-head">
     <span class="tag">OpenAI Blog</span>
-    <span class="item-time">09/03 20:00</span>
+    <span class="item-time">09/06 16:00</span>
   </div>
-  <h2><a href="https://openai.com/index/playco-game-prototyping-with-astra" target="_blank" rel="noopener">Playco cut manual fixes 50% prototyping games with GPT-6 Astra</a></h2>
-  <p>Playco 利用 GPT-6 Astra 開發遊戲原型，成功減少 50% 的人工修復工作。</p>
-</article>
-<article class="item openai">
-  <div class="item-head">
-    <span class="tag">OpenAI Blog</span>
-    <span class="item-time">09/03 20:00</span>
-  </div>
-  <h2><a href="https://openai.com/index/legora-financial-statement-review-with-astra" target="_blank" rel="noopener">Legora reviewed 41 documents in minutes with GPT-6 Astra</a></h2>
-  <p>Legora 利用 GPT-6 Astra 在數分鐘內審閱 41 份文件，精準找出錯誤並提升近 40% 工作效率。</p>
-</article>
-<article class="item openai">
-  <div class="item-head">
-    <span class="tag">OpenAI Blog</span>
-    <span class="item-time">09/03 19:00</span>
-  </div>
-  <h2><a href="https://openai.com/index/gpt-6-astra" target="_blank" rel="noopener">GPT-6 Astra: A new generation of intelligence</a></h2>
-  <p>GPT-6 Astra: A new generation of intelligence</p>
-</article>
-<article class="item openai">
-  <div class="item-head">
-    <span class="tag">OpenAI Blog</span>
-    <span class="item-time">09/03 08:00</span>
-  </div>
-  <h2><a href="https://openai.com/index/safety-overview-gpt-6-astra" target="_blank" rel="noopener">Safety overview: GPT-6 Astra</a></h2>
-  <p>GPT-6 Astra 是首個達到準備框架中關鍵網路安全等級的廣泛部署模型。</p>
-</article>
-<article class="item deepmind">
-  <div class="item-head">
-    <span class="tag">Google DeepMind</span>
-    <span class="item-time">09/03 23:02</span>
-  </div>
-  <h2><a href="https://deepmind.google/blog/introducing-weathernext-3-our-most-advanced-and-accurate-global-weather-ai-model/" target="_blank" rel="noopener">Introducing WeatherNext 3, our most advanced and accurate global weather AI model</a></h2>
-  <p>WeatherNext 3 正式發布，為該公司迄今最先進且精準的全球天氣 AI 模型。</p>
-</article>
-<article class="item technews">
-  <div class="item-head">
-    <span class="tag">TechNews</span>
-    <span class="item-time">09/03 15:00</span>
-  </div>
-  <h2><a href="https://finance.technews.tw/2026/09/03/the-hunt-for-ai-proof-assets-is-leading-investors-to-sports-casinos-and-travel/" target="_blank" rel="noopener">AI 時代的新避風港？創投轉向運動、旅遊等「抗 AI」實體資產</a></h2>
-  <p>AI 發展加速，部分創投轉向運動、旅遊等實體產業尋求投資避風港。</p>
+  <h2><a href="https://openai.com/index/research-acceleration-view-inside-openai" target="_blank" rel="noopener">Research acceleration: The view inside OpenAI</a></h2>
+  <p>OpenAI 內部正透過編碼代理程式提升研究速度與任務複雜度。</p>
 </article>
 <article class="item inside">
   <div class="item-head">
     <span class="tag">INSIDE</span>
-    <span class="item-time">09/05 16:03</span>
+    <span class="item-time">09/07 07:21</span>
   </div>
-  <h2><a href="https://www.inside.com.tw/article/42312-roland-melody-flip" target="_blank" rel="noopener">Roland 推出 Melody Flip，從音樂循環切入生成式 AI 創作市場</a></h2>
-  <p>Roland 推出 Melody Flip 生成式 AI 工具，協助創作者產出 MIDI 素材以輔助音樂創作。</p>
+  <h2><a href="https://www.inside.com.tw/article/42314-nyc-ai-ban-students-2026" target="_blank" rel="noopener">紐約市 60 萬名學生停用 AI 一年，生成式 AI 禁令全美最大學區今秋上路</a></h2>
+  <p>紐約市宣布 60 萬名中小學生將於新學年起全面停用生成式 AI。</p>
 </article>
 <article class="item inside">
   <div class="item-head">
     <span class="tag">INSIDE</span>
-    <span class="item-time">09/05 14:29</span>
+    <span class="item-time">09/06 19:21</span>
   </div>
-  <h2><a href="https://www.inside.com.tw/article/42309-openai-rogue-agents-german-wiki" target="_blank" rel="noopener">OpenAI AI 代理遭控占用德語 Wiki，疑組成「代理群」交流規避安全限制</a></h2>
-  <p>研究指稱一群疑似源自 OpenAI 的 AI 代理，占用德語 Wiki 交流規避安全限制的方法。</p>
+  <h2><a href="https://www.inside.com.tw/article/42295-tailscale-tailcat-intro" target="_blank" rel="noopener">AI 遠端神器 Tailscale 推 Tailcat：不用帳號、不用 IP、不需要 root 的點到點加密傳輸</a></h2>
+  <p>Tailscale 推出開源工具 Tailcat，支援免帳號、免 IP 且無需 root 的加密傳輸。</p>
 </article>
 <article class="item hn">
   <div class="item-head">
     <span class="tag">Hacker News</span>
-    <span class="item-time">09/04 02:41</span>
+    <span class="item-time">09/06 09:52</span>
   </div>
-  <h2><a href="https://openai.com/index/gpt-6-astra/" target="_blank" rel="noopener">GPT-6 Astra</a></h2>
-  <p>GPT-6 Astra 為相關技術名稱。</p>
+  <h2><a href="https://openai.robocurve.org/gpt-6-astra/" target="_blank" rel="noopener">GPT-6 Astra on robot arms</a></h2>
+  <p>GPT-6 Astra 技術已應用於機器手臂。</p>
 </article>
 <article class="item hn">
   <div class="item-head">
     <span class="tag">Hacker News</span>
-    <span class="item-time">09/04 19:54</span>
+    <span class="item-time">09/06 10:12</span>
   </div>
-  <h2><a href="https://collusion.wiki/" target="_blank" rel="noopener">Discovery of a new OpenAI agent message board</a></h2>
-  <p>OpenAI 被發現設立了一個全新的代理人訊息看板。</p>
+  <h2><a href="https://www.ben-evans.com/benedictevans/2026/9/3/ai-tools-and-transformation" target="_blank" rel="noopener">AI, Tools and Transformation</a></h2>
+  <p>本文探討人工智慧、工具應用與轉型議題。</p>
 </article>
 <article class="item hn">
   <div class="item-head">
     <span class="tag">Hacker News</span>
-    <span class="item-time">09/04 02:32</span>
+    <span class="item-time">09/07 06:59</span>
   </div>
-  <h2><a href="https://inference-docs.cerebras.ai/models/overview" target="_blank" rel="noopener">Qwen 3.8 27B available on Cerebras at 1500 tokens/s</a></h2>
-  <p>Qwen 3.8 27B 模型現已於 Cerebras 上線，推論速度達每秒 1500 tokens。</p>
-</article>
-<article class="item hn">
-  <div class="item-head">
-    <span class="tag">Hacker News</span>
-    <span class="item-time">09/03 09:11</span>
-  </div>
-  <h2><a href="https://www.kedglobal.com/artificial-intelligence/newsView/ked202607210007" target="_blank" rel="noopener">Go grandmaster Shin defeats AI KataGo with a two-stone handicap</a></h2>
-  <p>圍棋大師申真諝在受讓兩子的情況下，擊敗了 AI 圍棋程式 KataGo。</p>
-</article>
-<article class="item hn">
-  <div class="item-head">
-    <span class="tag">Hacker News</span>
-    <span class="item-time">09/05 03:48</span>
-  </div>
-  <h2><a href="https://eebench.org/blog/can-ai-design-circuit-boards-yet/" target="_blank" rel="noopener">Can AI design circuit boards yet?</a></h2>
-  <p>AI 是否已具備設計電路板的能力？</p>
-</article>
-<article class="item hf">
-  <div class="item-head">
-    <span class="tag">Hugging Face</span>
-    <span class="item-time">09/03 21:13</span>
-  </div>
-  <h2><a href="https://huggingface.co/blog/Hcompany/neomme" target="_blank" rel="noopener">NeoMME: an efficient Multimodal-native and Multilingual Encoder</a></h2>
-  <p>NeoMME 是一款高效的多模態原生與多語言編碼器。</p>
-</article>
-<article class="item hf">
-  <div class="item-head">
-    <span class="tag">Hugging Face</span>
-    <span class="item-time">09/03 08:00</span>
-  </div>
-  <h2><a href="https://huggingface.co/blog/grpo-with-trl-ifstruct" target="_blank" rel="noopener">Fine-tuning a 350M Model for Better Structured Outputs in 100 GRPO Steps</a></h2>
-  <p>透過 100 個 GRPO 步驟微調 350M 模型，以提升結構化輸出表現。</p>
-</article>
-<article class="item arxiv">
-  <div class="item-head">
-    <span class="tag">arXiv</span>
-    <span class="item-time">09/04 01:59</span>
-  </div>
-  <h2><a href="https://arxiv.org/abs/2609.04199v1" target="_blank" rel="noopener">Compile by Training: Turning Natural-Language Specifications into Local Neural Functions</a></h2>
-  <p>「編譯訓練」技術將自然語言需求轉化為小型神經函數，提升執行效率並降低對大型模型的依賴。</p>
-</article>
-<article class="item arxiv">
-  <div class="item-head">
-    <span class="tag">arXiv</span>
-    <span class="item-time">09/04 01:59</span>
-  </div>
-  <h2><a href="https://arxiv.org/abs/2609.04198v1" target="_blank" rel="noopener">Clean Engineering, Unstable Measurement: A Preregistered Reliability Failure of Black-Box LLM Observers on Shared Endpoints</a></h2>
-  <p>研究顯示大型語言模型作為評測工具時，其評分結果存在顯著不穩定性，難以作為可靠的測量指標。</p>
+  <h2><a href="https://www.axios.com/2026/08/19/gop-data-center-memo-ai-election" target="_blank" rel="noopener">GOP issues stark warning to AI companies</a></h2>
+  <p>共和黨對人工智慧公司發出嚴正警告。</p>
 </article>
   <footer>由自動化 pipeline 每日生成 · 摘要僅依原文,連結直達原始出處</footer>
 </div>
