@@ -5,10 +5,12 @@ import time
 import feedparser
 import urllib.parse
 
-ARXIV_API = "http://export.arxiv.org/api/query"
+ARXIV_API = "https://export.arxiv.org/api/query"  # arxiv 現在把 http 導向 https(301),直接用 https 避開多一次重新導向
 CATEGORIES = ["cs.AI", "cs.CL", "cs.LG"]
 MAX_ATTEMPTS = 2
-RETRY_DELAY = 3  # 秒;偶爾會收到不完整/損毀的 XML(疑似網路傳輸瞬斷),重試一次通常就好
+# arXiv 官方規定「每 3 秒最多 1 次請求,且是所有機器加總」,重試間隔一定要大於 3 秒,
+# 不然重試本身就違規、繼續被 429 擋下(這正是先前誤判成「偶發網路問題」的真正原因)。
+RETRY_DELAY = 8  # 秒
 
 def fetch(limit: int = 10) -> tuple[list[dict], str | None]:
     """回傳 (items, error)。items 依最新提交排序,error 為 None 代表抓取成功。"""
@@ -25,6 +27,9 @@ def fetch(limit: int = 10) -> tuple[list[dict], str | None]:
     for attempt in range(MAX_ATTEMPTS):
         try:
             feed = feedparser.parse(url)
+            status = feed.get("status")
+            if status and status >= 400:
+                raise ValueError(f"HTTP {status}" + (" (可能撞到 arXiv 頻率限制:每 3 秒最多 1 次請求)" if status == 429 else ""))
             if feed.bozo and not feed.entries:
                 raise ValueError(str(feed.bozo_exception))
             items: list[dict] = []
