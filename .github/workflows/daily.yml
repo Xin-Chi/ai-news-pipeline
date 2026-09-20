@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write   # 允許 commit 更新後的 docs/index.html
+  contents: write   # 允許 commit 更新後的 docs/(首頁 + grounding 檢查紀錄)
 
 jobs:
   build:
@@ -24,12 +24,17 @@ jobs:
       - name: Run pipeline
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          EMAIL_ADDRESS: ${{ secrets.EMAIL_ADDRESS }}
+          EMAIL_APP_PASSWORD: ${{ secrets.EMAIL_APP_PASSWORD }}
+          EMAIL_TO: ${{ secrets.EMAIL_TO }}
         run: python main.py
       - name: Commit updated page
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git add docs/index.html
+          # 整個 docs/ 一起 add:除了首頁,還有 verify/index.html 與
+          # verify/history.json(grounding 檢查的歷史紀錄,git 就是它的資料庫)
+          git add docs
           git diff --staged --quiet || git commit -m "chore: update daily AI brief"
           git push
 

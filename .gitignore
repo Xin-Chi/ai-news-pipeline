@@ -1,3 +1,6 @@
 .env
 __pycache__/
 *.pyc
+
+# 本機專案報告與交接筆記,刻意不公開
+PROJECT_REPORT.md

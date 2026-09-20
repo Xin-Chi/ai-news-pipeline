@@ -1,4 +1,5 @@
 requests>=2.31
 feedparser>=6.0
+trafilatura>=2.0   # 抓原文正文,補足部分來源 RSS 摘要過短(甚至沒有)的問題
 # 語意去重(選用):把 dedup.py 的 USE_EMBEDDINGS 打開才需要
 # sentence-transformers>=3.0

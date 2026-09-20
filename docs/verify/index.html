@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%20100%20100%27%3E%3Ctext%20y%3D%27.9em%27%20font-size%3D%2790%27%3E%E2%98%95%3C/text%3E%3C/svg%3E">
+<title>摘要品質檢查 · 每日 AI 快報</title>
+<style>
+  :root {
+    --bg:#0b0e14; --card:#151a24; --line:#242b3a;
+    --text:#e8ecf4; --muted:#8a93a6; --accent:#7c9eff;
+    --ok:#5ecb8a; --warn:#e8b339; --bad:#ff8a8a;
+  }
+  * { box-sizing:border-box; }
+  body {
+    margin:0; color:var(--text);
+    font-family:"Segoe UI",-apple-system,"Noto Sans TC",sans-serif; line-height:1.65;
+    background:
+      radial-gradient(900px circle at 15% -10%, rgba(124,158,255,0.14), transparent 55%),
+      var(--bg);
+  }
+  .wrap { max-width:760px; margin:0 auto; padding:48px 20px 72px; }
+  a { color:var(--accent); }
+  header h1 { font-size:26px; margin:0 0 6px; letter-spacing:-0.01em; }
+  header p { color:var(--muted); margin:0 0 4px; font-size:14px; }
+  .back { display:inline-block; margin-bottom:22px; font-size:13px; text-decoration:none; }
+  .stats { display:grid; grid-template-columns:repeat(4, 1fr); gap:12px; margin:22px 0 32px; }
+  .stat {
+    background:var(--card); border:1px solid var(--line); border-radius:14px;
+    padding:14px 12px; text-align:center;
+  }
+  .stat .num { display:block; font-size:22px; font-weight:700; letter-spacing:-0.02em; }
+  .stat .lbl { font-size:12px; color:var(--muted); }
+  h2 { font-size:16px; margin:32px 0 12px; font-weight:600; }
+  .note {
+    background:rgba(124,158,255,0.07); border:1px solid rgba(124,158,255,0.2);
+    border-radius:12px; padding:13px 15px; font-size:13px; color:var(--muted); line-height:1.7;
+  }
+  .note b { color:var(--text); font-weight:600; }
+  .note p { margin:0; }
+  .note ol { margin:6px 0 10px; padding-left:20px; }
+  .note li { margin:2px 0; }
+  .flag {
+    background:var(--card); border:1px solid var(--line); border-left:3px solid var(--warn);
+    border-radius:12px; padding:14px 16px; margin-bottom:10px;
+  }
+  .flag-head { display:flex; gap:10px; align-items:center; font-size:11.5px; color:var(--muted); margin-bottom:6px; flex-wrap:wrap; }
+  .flag h3 { font-size:14.5px; margin:0 0 6px; font-weight:600; }
+  .flag h3 a { color:var(--text); text-decoration:none; }
+  .flag h3 a:hover { color:var(--accent); }
+  .flag .sum { font-size:13px; color:var(--muted); margin:0 0 8px; }
+  .flag .why { font-size:13px; color:var(--warn); margin:0; }
+  .empty { color:var(--muted); font-size:14px; }
+  .cap { color:var(--muted); font-size:12.5px; margin:-4px 0 12px; }
+  table { width:100%; border-collapse:collapse; font-size:13px; }
+  th {
+    text-align:right; font-weight:600; color:var(--muted); font-size:12px;
+    padding:8px 10px; border-bottom:1px solid var(--line); white-space:nowrap;
+  }
+  th:first-child, td:first-child { text-align:left; }
+  th.w { width:130px; }
+  td { text-align:right; padding:8px 10px; border-bottom:1px solid rgba(36,43,58,0.5); white-space:nowrap; }
+  td.ok { color:var(--ok); }
+  td.warn { color:var(--warn); }
+  td.muted { color:var(--muted); }
+  /* 通過率:數字 + 一條純 CSS 的長條,不需要任何圖表函式庫 */
+  .rate { display:flex; align-items:center; gap:8px; justify-content:flex-end; }
+  .rate .bar { flex:1; height:6px; border-radius:3px; background:var(--line); overflow:hidden; max-width:72px; }
+  .rate .fill { display:block; height:100%; background:var(--ok); }
+  .rate .pct { min-width:34px; }
+  .dotmark { display:inline-block; width:7px; height:7px; border-radius:50%; margin-right:7px; vertical-align:middle; }
+  .scroll { overflow-x:auto; }
+  @media (max-width: 520px) { .stats { grid-template-columns:repeat(2, 1fr); } }
+  footer { color:var(--muted); font-size:12px; text-align:center; margin-top:40px; opacity:.7; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>摘要品質檢查</h1>
+    <p>每天自動驗證每則摘要是不是真的有原文根據,結果公開記錄在這裡。</p>
+    <a class="back" href="../">← 回每日 AI 快報</a>
+  </header>
+
+  <div class="stats">
+    <div class="stat"><span class="num">5</span><span class="lbl">累計檢查</span></div>
+    <div class="stat"><span class="num" style="color:var(--ok)">100%</span><span class="lbl">通過率</span></div>
+    <div class="stat"><span class="num" style="color:var(--warn)">0</span><span class="lbl">被標記</span></div>
+    <div class="stat"><span class="num" style="color:var(--muted)">1</span><span class="lbl">記錄天數</span></div>
+  </div>
+
+  <div class="note">
+    <p>每則摘要要過三關:</p>
+    <ol>
+      <li>摘要不能跟標題一模一樣</li>
+      <li>摘要裡的數字與英文詞,原文必須找得到</li>
+      <li>交給另一次 LLM 呼叫,判斷有沒有原文沒講的內容或誇大</li>
+    </ol>
+    <p>驗的是<b>模型當初真正看到的那份文字</b>。Hacker News 沒有內文可抓,不列入檢查。</p>
+  </div>
+
+  <h2>依摘要素材分組</h2>
+  <p class="cap">摘要是拿什麼產生的,對應首頁標題旁的色點。這張表要回答的是:餵全文真的比餵 RSS 摘要可靠嗎?</p>
+  <div class="scroll"><table>
+    <tr><th>素材</th><th>檢查</th><th>通過</th><th>標記</th><th class="w">通過率</th></tr>
+    <tr><td><span class="dotmark" style="background:#e8b339"></span>全文</td><td>5</td><td class="ok">5</td><td class="muted">0</td><td><div class="rate"><span class="bar"><span class="fill" style="width:100%"></span></span><span class="pct">100%</span></div></td></tr>
+  </table></div>
+
+  <h2>依來源分組</h2>
+  <p class="cap">通過率由低到高排,最需要留意的排在最上面。</p>
+  <div class="scroll"><table>
+    <tr><th>來源</th><th>檢查</th><th>通過</th><th>標記</th><th class="w">通過率</th></tr>
+    <tr><td>TechCrunch</td><td>3</td><td class="ok">3</td><td class="muted">0</td><td><div class="rate"><span class="bar"><span class="fill" style="width:100%"></span></span><span class="pct">100%</span></div></td></tr>
+    <tr><td>TechNews</td><td>1</td><td class="ok">1</td><td class="muted">0</td><td><div class="rate"><span class="bar"><span class="fill" style="width:100%"></span></span><span class="pct">100%</span></div></td></tr>
+    <tr><td>INSIDE</td><td>1</td><td class="ok">1</td><td class="muted">0</td><td><div class="rate"><span class="bar"><span class="fill" style="width:100%"></span></span><span class="pct">100%</span></div></td></tr>
+  </table></div>
+
+  <h2>每日紀錄</h2>
+  <div class="scroll"><table>
+    <tr><th>日期</th><th>檢查</th><th>通過</th><th>標記</th><th class="w">通過率</th></tr>
+    <tr><td>2026-09-20</td><td>5</td><td class="ok">5</td><td class="muted">0</td><td><div class="rate"><span class="bar"><span class="fill" style="width:100%"></span></span><span class="pct">100%</span></div></td></tr>
+  </table></div>
+
+  <h2>被標記的項目</h2>
+  <p class="empty">目前沒有任何項目被標記。</p>
+
+  <footer>由自動化 pipeline 每日生成 · 保留最近 365 天</footer>
+</div>
+</body>
+</html>
