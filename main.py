@@ -2,7 +2,7 @@
 
 這是一條 workflow(不是 agent):控制流由這支程式寫死,LLM 只在
 「摘要」那一格被呼叫。你是編排者,LLM 是零件。
-流程:抓取 → 去重 → 依來源保底+優先順序選稿 → 逐篇摘要 → 渲染靜態頁。
+流程:抓取 → 24 小時過濾 → 去重 → 依來源保底+優先順序選稿 → 逐篇摘要 → 渲染靜態頁。
 用法:python main.py  /  python main.py --mock(不呼叫 LLM 測流程)"""
 import os
 import sys
