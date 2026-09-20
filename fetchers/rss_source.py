@@ -3,6 +3,7 @@
 不會丟例外,error 帶回原因,讓 main.py 決定要不要在頁面上顯示「來源異常」。
 """
 import calendar
+import html
 import re
 import feedparser
 import requests
@@ -12,7 +13,11 @@ _TAG_RE = re.compile(r"<[^>]+>")
 
 
 def _strip_html(text: str) -> str:
-    return _TAG_RE.sub(" ", text or "").replace("\xa0", " ").strip()
+    # 先去標籤,再解一次 HTML 實體(有些來源的 feed 本身就把 ' 之類的字元
+    # 寫死成 &#039; 這種跳脫過的文字,不解開的話,我們自己 render 時再
+    # escape 一次就會變成 &amp;#039; 這種疊加後的亂碼)。
+    stripped = _TAG_RE.sub(" ", text or "").replace("\xa0", " ").strip()
+    return html.unescape(stripped)
 
 
 def fetch(
