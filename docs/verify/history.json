@@ -54,5 +54,61 @@
    }
   },
   "flags": []
+ },
+ {
+  "date": "2026-09-21",
+  "updated_at": "2026-09-21 08:27",
+  "total": 12,
+  "passed": 7,
+  "flagged": 0,
+  "unverifiable": 5,
+  "error": 0,
+  "by_source": {
+   "TechNews": {
+    "total": 2,
+    "passed": 2,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "INSIDE": {
+    "total": 2,
+    "passed": 2,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "Hacker News": {
+    "total": 5,
+    "passed": 0,
+    "flagged": 0,
+    "unverifiable": 5,
+    "error": 0
+   },
+   "TechCrunch": {
+    "total": 3,
+    "passed": 3,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   }
+  },
+  "by_body_source": {
+   "full": {
+    "total": 7,
+    "passed": 7,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "title": {
+    "total": 5,
+    "passed": 0,
+    "flagged": 0,
+    "unverifiable": 5,
+    "error": 0
+   }
+  },
+  "flags": []
  }
 ]
