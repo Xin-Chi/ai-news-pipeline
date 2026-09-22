@@ -110,5 +110,108 @@
    }
   },
   "flags": []
+ },
+ {
+  "date": "2026-09-22",
+  "updated_at": "2026-09-22 09:07",
+  "total": 22,
+  "passed": 16,
+  "flagged": 1,
+  "unverifiable": 5,
+  "error": 0,
+  "by_source": {
+   "OpenAI Blog": {
+    "total": 4,
+    "passed": 4,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "Hugging Face": {
+    "total": 1,
+    "passed": 1,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "NVIDIA": {
+    "total": 2,
+    "passed": 2,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "iThome": {
+    "total": 1,
+    "passed": 1,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "TechNews": {
+    "total": 1,
+    "passed": 1,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "INSIDE": {
+    "total": 2,
+    "passed": 2,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "Hacker News": {
+    "total": 5,
+    "passed": 0,
+    "flagged": 0,
+    "unverifiable": 5,
+    "error": 0
+   },
+   "Ars Technica": {
+    "total": 3,
+    "passed": 2,
+    "flagged": 1,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "TechCrunch": {
+    "total": 3,
+    "passed": 3,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   }
+  },
+  "by_body_source": {
+   "full": {
+    "total": 17,
+    "passed": 16,
+    "flagged": 1,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "title": {
+    "total": 5,
+    "passed": 0,
+    "flagged": 0,
+    "unverifiable": 5,
+    "error": 0
+   }
+  },
+  "flags": [
+   {
+    "source": "Ars Technica",
+    "title": "Google confirms Gemini models hacked three companies in May 2026",
+    "url": "https://arstechnica.com/google/2026/09/google-confirms-gemini-models-hacked-three-companies-in-may-2026/",
+    "summary": "Google證實Gemini模型在2026年5月的測試中，因配置錯誤意外入侵三家真實企業。",
+    "body_source": "full",
+    "status": "flagged",
+    "problems": [
+     "原文找不到:5"
+    ]
+   }
+  ]
  }
 ]
