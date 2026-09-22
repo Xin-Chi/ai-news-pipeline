@@ -32,6 +32,42 @@ NUM_RE = re.compile(r"\d+(?:[.,]\d+)?")
 # 3 個字元以上的英數詞才算,避免 AI、of 這種長度抓出一堆雜訊
 WORD_RE = re.compile(r"[A-Za-z][A-Za-z0-9.\-]{2,}")
 
+# 摘要是中文、原文多半是英文,同一個數字翻譯後形態會變,直接比字面會誤報。
+# 實測案例:原文 "during a May 2026 test" → 摘要「2026年5月」,字面比對說
+# 「原文找不到 5」,但摘要完全正確。反過來原文 "three companies" → 摘要
+# 「三家」,中文數字根本沒被抽出來檢查,那才是真正該驗的事實卻漏掉了。
+# 下面兩張表讓兩邊先對齊再比。
+#
+# 月份刻意「區分大小寫」比對:英文月份一定大寫,而小寫的 may 是情態動詞,
+# 在新聞裡滿地都是,不分大小寫的話等於每篇都自動放行數字 5。
+MONTH_WORDS = {
+    "January": "1", "Jan": "1", "February": "2", "Feb": "2", "March": "3", "Mar": "3",
+    "April": "4", "Apr": "4", "May": "5", "June": "6", "Jun": "6", "July": "7", "Jul": "7",
+    "August": "8", "Aug": "8", "September": "9", "Sep": "9", "Sept": "9",
+    "October": "10", "Oct": "10", "November": "11", "Nov": "11", "December": "12", "Dec": "12",
+}
+NUMBER_WORDS = {
+    "one": "1", "two": "2", "three": "3", "four": "4", "five": "5", "six": "6",
+    "seven": "7", "eight": "8", "nine": "9", "ten": "10", "eleven": "11", "twelve": "12",
+    "dozen": "12", "hundred": "100", "thousand": "1000",
+    "million": "1000000", "billion": "1000000000", "trillion": "1000000000000",
+}
+CJK_DIGITS = {"〇": "0", "零": "0", "一": "1", "二": "2", "兩": "2", "三": "3", "四": "4",
+              "五": "5", "六": "6", "七": "7", "八": "8", "九": "9"}
+# 位數字。中文數字一碰到這些就不是「單一數字」了(二十 ≠ 2),整串跳過不換算,
+# 寧可漏驗也不要把「二十」讀成 2 再去原文找不到而誤報。
+CJK_UNITS = "十百千萬億兆"
+# 中文數字只有「後面接量詞」時才換算。少了這層,「三星」會被讀成 3、跑去原文找
+# 不到而誤報(Samsung 跟數字三無關)。白名單漏掉的情況只是不驗,不會誤判。
+CJK_MEASURES = "家個人次名間款項種類倍成位天年月日則筆張台套組層級步大份場回"
+_CJK_SOLO_RE = re.compile(
+    f"(?<![{''.join(CJK_DIGITS)}{CJK_UNITS}])([{''.join(CJK_DIGITS)}])"
+    f"(?=[{CJK_MEASURES}])"
+)
+# 摘要裡「數字 + 中文位數」(10 億、3 萬)跨語言換算不可靠(原文可能寫 a billion、
+# 30,000、30K),一律跳過不檢查。這是已知的驗不到,不是驗過了。
+_SCALED_NUM_RE = re.compile(rf"\d+(?:[.,]\d+)?\s*[{CJK_UNITS}]")
+
 JUDGE_SYSTEM = (
     "你是事實查核員。使用者會給你一篇文章的原文,以及一句根據它寫成的中文摘要。\n"
     "請判斷這句摘要是否完全有原文支持。\n"
@@ -52,18 +88,42 @@ JUDGE_SCHEMA = {
 }
 
 
+def _source_numbers(source: str) -> set[str]:
+    """原文裡「算數得出來」的數字集合:阿拉伯數字,加上英文月份與數字詞的換算值。"""
+    nums = set(NUM_RE.findall(source))
+    for word, digit in MONTH_WORDS.items():
+        if re.search(rf"\b{word}\b", source):  # 區分大小寫,見上面的註解
+            nums.add(digit)
+    lowered = source.lower()
+    for word, digit in NUMBER_WORDS.items():
+        if re.search(rf"\b{word}s?\b", lowered):
+            nums.add(digit)
+    return nums
+
+
+def _summary_numbers(summary: str) -> list[str]:
+    """摘要裡可以拿去比對的數字:中文數字先換算,帶中文位數的整個跳過。"""
+    text = _CJK_SOLO_RE.sub(lambda m: CJK_DIGITS[m.group(1)], summary)
+    return NUM_RE.findall(_SCALED_NUM_RE.sub(" ", text))
+
+
 def literal_check(summary: str, source: str) -> list[str]:
     """回傳摘要裡出現、但原文找不到的字串。
 
-    限制(不要把空清單當成「沒問題」):中文摘要對英文原文,中文詞彙無從比對,
+    限制(不要把空清單當成「沒問題」):中文摘要對英文原文,一般中文詞彙無從比對,
     只有數字與英數詞驗得到;而且摘要限 40 字,本來就很少寫到數字,涵蓋率天生就低。
-    換算過的數字(原文 a billion → 摘要「10 億」)也會誤報。
+    月份與數字詞的換算表也只是把最常見的幾類對齊,不是完整的數字翻譯。
     真正能抓到語意層級問題的是 judge()。
     """
     lowered = source.lower()
-    missing = [n for n in NUM_RE.findall(summary) if n not in source]
-    missing += [w for w in WORD_RE.findall(summary) if w.lower() not in lowered]
-    return missing
+    source_nums = _source_numbers(source)
+    words = [w for w in WORD_RE.findall(summary) if w.lower() not in lowered]
+    nums = [n for n in _summary_numbers(summary)
+            if n not in source and n not in source_nums
+            # 已經被當成缺漏英數詞報出來的,不要再拆出裡面的數字重報一次
+            # (GPT-6 報一次就夠,不用再附一個「原文找不到 6」)
+            and not any(n in w for w in words)]
+    return nums + words
 
 
 def judge(summary: str, source: str) -> dict:
