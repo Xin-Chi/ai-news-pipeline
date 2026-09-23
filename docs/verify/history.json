@@ -213,5 +213,105 @@
     ]
    }
   ]
+ },
+ {
+  "date": "2026-09-23",
+  "updated_at": "2026-09-23 08:55",
+  "total": 19,
+  "passed": 12,
+  "flagged": 2,
+  "unverifiable": 5,
+  "error": 0,
+  "by_source": {
+   "OpenAI Blog": {
+    "total": 3,
+    "passed": 1,
+    "flagged": 2,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "NVIDIA": {
+    "total": 1,
+    "passed": 1,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "iThome": {
+    "total": 2,
+    "passed": 2,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "INSIDE": {
+    "total": 2,
+    "passed": 2,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "Hacker News": {
+    "total": 5,
+    "passed": 0,
+    "flagged": 0,
+    "unverifiable": 5,
+    "error": 0
+   },
+   "Ars Technica": {
+    "total": 3,
+    "passed": 3,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "TechCrunch": {
+    "total": 3,
+    "passed": 3,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   }
+  },
+  "by_body_source": {
+   "full": {
+    "total": 14,
+    "passed": 12,
+    "flagged": 2,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "title": {
+    "total": 5,
+    "passed": 0,
+    "flagged": 0,
+    "unverifiable": 5,
+    "error": 0
+   }
+  },
+  "flags": [
+   {
+    "source": "OpenAI Blog",
+    "title": "Better prompt caching for GPT-6",
+    "url": "https://openai.com/index/better-prompt-caching-for-gpt-6",
+    "summary": "GPT-6 推出優化提示詞快取系統，提供監控儀表板與診斷工具，助開發者提升快取命中率並降低成本。",
+    "body_source": "full",
+    "status": "flagged",
+    "problems": [
+     "原文找不到:GPT-6"
+    ]
+   },
+   {
+    "source": "OpenAI Blog",
+    "title": "Parallel cut research time and cost in half with GPT‑6 Astra",
+    "url": "https://openai.com/index/parallel-cuts-time-and-cost-with-astra",
+    "summary": "Parallel 使用 GPT-6 Astra 進行市場研究，成功將時間與成本減半，並提升研究效率。",
+    "body_source": "full",
+    "status": "flagged",
+    "problems": [
+     "原文找不到:GPT-6"
+    ]
+   }
+  ]
  }
 ]
