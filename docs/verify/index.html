@@ -84,8 +84,8 @@
 
   <div class="stats">
     <div class="stat"><span class="num">43</span><span class="lbl">累計檢查</span></div>
-    <div class="stat"><span class="num" style="color:var(--ok)">93%</span><span class="lbl">通過率</span></div>
-    <div class="stat"><span class="num" style="color:var(--warn)">3</span><span class="lbl">被標記</span></div>
+    <div class="stat"><span class="num" style="color:var(--ok)">98%</span><span class="lbl">通過率</span></div>
+    <div class="stat"><span class="num" style="color:var(--warn)">1</span><span class="lbl">被標記</span></div>
     <div class="stat"><span class="num" style="color:var(--muted)">4</span><span class="lbl">記錄天數</span></div>
   </div>
 
@@ -103,17 +103,17 @@
   <p class="cap">摘要是拿什麼產生的,對應首頁標題旁的色點。這張表要回答的是:餵全文真的比餵 RSS 摘要可靠嗎?</p>
   <div class="scroll"><table>
     <tr><th>素材</th><th>檢查</th><th>通過</th><th>標記</th><th class="w">通過率</th></tr>
-    <tr><td><span class="dotmark" style="background:#e8b339"></span>全文</td><td>43</td><td class="ok">40</td><td class="warn">3</td><td><div class="rate"><span class="bar"><span class="fill" style="width:93%"></span></span><span class="pct">93%</span></div></td></tr>
+    <tr><td><span class="dotmark" style="background:#e8b339"></span>全文</td><td>43</td><td class="ok">42</td><td class="warn">1</td><td><div class="rate"><span class="bar"><span class="fill" style="width:98%"></span></span><span class="pct">98%</span></div></td></tr>
   </table></div>
 
   <h2>依來源分組</h2>
   <p class="cap">通過率由低到高排,最需要留意的排在最上面。</p>
   <div class="scroll"><table>
     <tr><th>來源</th><th>檢查</th><th>通過</th><th>標記</th><th class="w">通過率</th></tr>
-    <tr><td>OpenAI Blog</td><td>7</td><td class="ok">5</td><td class="warn">2</td><td><div class="rate"><span class="bar"><span class="fill" style="width:71%"></span></span><span class="pct">71%</span></div></td></tr>
     <tr><td>Ars Technica</td><td>6</td><td class="ok">5</td><td class="warn">1</td><td><div class="rate"><span class="bar"><span class="fill" style="width:83%"></span></span><span class="pct">83%</span></div></td></tr>
     <tr><td>TechCrunch</td><td>12</td><td class="ok">12</td><td class="muted">0</td><td><div class="rate"><span class="bar"><span class="fill" style="width:100%"></span></span><span class="pct">100%</span></div></td></tr>
     <tr><td>INSIDE</td><td>7</td><td class="ok">7</td><td class="muted">0</td><td><div class="rate"><span class="bar"><span class="fill" style="width:100%"></span></span><span class="pct">100%</span></div></td></tr>
+    <tr><td>OpenAI Blog</td><td>7</td><td class="ok">7</td><td class="muted">0</td><td><div class="rate"><span class="bar"><span class="fill" style="width:100%"></span></span><span class="pct">100%</span></div></td></tr>
     <tr><td>TechNews</td><td>4</td><td class="ok">4</td><td class="muted">0</td><td><div class="rate"><span class="bar"><span class="fill" style="width:100%"></span></span><span class="pct">100%</span></div></td></tr>
     <tr><td>NVIDIA</td><td>3</td><td class="ok">3</td><td class="muted">0</td><td><div class="rate"><span class="bar"><span class="fill" style="width:100%"></span></span><span class="pct">100%</span></div></td></tr>
     <tr><td>iThome</td><td>3</td><td class="ok">3</td><td class="muted">0</td><td><div class="rate"><span class="bar"><span class="fill" style="width:100%"></span></span><span class="pct">100%</span></div></td></tr>
@@ -123,7 +123,7 @@
   <h2>每日紀錄</h2>
   <div class="scroll"><table>
     <tr><th>日期</th><th>檢查</th><th>通過</th><th>標記</th><th class="w">通過率</th></tr>
-    <tr><td>2026-09-23</td><td>14</td><td class="ok">12</td><td class="warn">2</td><td><div class="rate"><span class="bar"><span class="fill" style="width:86%"></span></span><span class="pct">86%</span></div></td></tr>
+    <tr><td>2026-09-23</td><td>14</td><td class="ok">14</td><td class="muted">0</td><td><div class="rate"><span class="bar"><span class="fill" style="width:100%"></span></span><span class="pct">100%</span></div></td></tr>
     <tr><td>2026-09-22</td><td>17</td><td class="ok">16</td><td class="warn">1</td><td><div class="rate"><span class="bar"><span class="fill" style="width:94%"></span></span><span class="pct">94%</span></div></td></tr>
     <tr><td>2026-09-21</td><td>7</td><td class="ok">7</td><td class="muted">0</td><td><div class="rate"><span class="bar"><span class="fill" style="width:100%"></span></span><span class="pct">100%</span></div></td></tr>
     <tr><td>2026-09-20</td><td>5</td><td class="ok">5</td><td class="muted">0</td><td><div class="rate"><span class="bar"><span class="fill" style="width:100%"></span></span><span class="pct">100%</span></div></td></tr>
@@ -131,18 +131,6 @@
 
   <h2>被標記的項目</h2>
   <div class="flag">
-  <div class="flag-head"><span>2026-09-23</span><span>·</span><span>OpenAI Blog</span></div>
-  <h3><a href="https://openai.com/index/better-prompt-caching-for-gpt-6" target="_blank" rel="noopener">Better prompt caching for GPT-6</a></h3>
-  <p class="sum">產生的摘要:GPT-6 推出優化提示詞快取系統，提供監控儀表板與診斷工具，助開發者提升快取命中率並降低成本。</p>
-  <p class="why">原文找不到:GPT-6</p>
-</div>
-<div class="flag">
-  <div class="flag-head"><span>2026-09-23</span><span>·</span><span>OpenAI Blog</span></div>
-  <h3><a href="https://openai.com/index/parallel-cuts-time-and-cost-with-astra" target="_blank" rel="noopener">Parallel cut research time and cost in half with GPT‑6 Astra</a></h3>
-  <p class="sum">產生的摘要:Parallel 使用 GPT-6 Astra 進行市場研究，成功將時間與成本減半，並提升研究效率。</p>
-  <p class="why">原文找不到:GPT-6</p>
-</div>
-<div class="flag">
   <div class="flag-head"><span>2026-09-22</span><span>·</span><span>Ars Technica</span></div>
   <h3><a href="https://arstechnica.com/google/2026/09/google-confirms-gemini-models-hacked-three-companies-in-may-2026/" target="_blank" rel="noopener">Google confirms Gemini models hacked three companies in May 2026</a></h3>
   <p class="sum">產生的摘要:Google證實Gemini模型在2026年5月的測試中，因配置錯誤意外入侵三家真實企業。</p>

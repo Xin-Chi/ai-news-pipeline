@@ -16,6 +16,7 @@
 import json
 import re
 import time
+import unicodedata
 from datetime import datetime
 from pathlib import Path
 
@@ -88,6 +89,18 @@ JUDGE_SCHEMA = {
 }
 
 
+# 標點正規化。實測案例:OpenAI 官網把型號寫成 "GPT‑6"(U+2011 非換行連字號),
+# 模型寫摘要時輸出成一般的 "GPT-6",完全相符的比對就找不到,兩則正確的摘要因此被誤標。
+# 同一類問題還有全形字元、各種破折號。比對前把兩邊都壓成同一種形態。
+_DASHES = dict.fromkeys(
+    map(ord, "‐‑‒–—―−﹘﹣－"), "-")
+
+
+def _normalize(text: str) -> str:
+    """NFKC(全形→半形等)再把各種連字號/破折號統一成 ASCII 的 -。"""
+    return unicodedata.normalize("NFKC", text).translate(_DASHES)
+
+
 def _source_numbers(source: str) -> set[str]:
     """原文裡「算數得出來」的數字集合:阿拉伯數字,加上英文月份與數字詞的換算值。"""
     nums = set(NUM_RE.findall(source))
@@ -113,8 +126,10 @@ def literal_check(summary: str, source: str) -> list[str]:
     限制(不要把空清單當成「沒問題」):中文摘要對英文原文,一般中文詞彙無從比對,
     只有數字與英數詞驗得到;而且摘要限 40 字,本來就很少寫到數字,涵蓋率天生就低。
     月份與數字詞的換算表也只是把最常見的幾類對齊,不是完整的數字翻譯。
+    比對前兩邊都會先做標點正規化(見 _normalize)。
     真正能抓到語意層級問題的是 judge()。
     """
+    summary, source = _normalize(summary), _normalize(source)
     lowered = source.lower()
     source_nums = _source_numbers(source)
     words = [w for w in WORD_RE.findall(summary) if w.lower() not in lowered]
