@@ -400,5 +400,94 @@
     ]
    }
   ]
+ },
+ {
+  "date": "2026-09-25",
+  "updated_at": "2026-09-25 08:45",
+  "total": 16,
+  "passed": 10,
+  "flagged": 1,
+  "unverifiable": 5,
+  "error": 0,
+  "by_source": {
+   "Google DeepMind": {
+    "total": 1,
+    "passed": 1,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "Hugging Face": {
+    "total": 1,
+    "passed": 1,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "TechNews": {
+    "total": 1,
+    "passed": 0,
+    "flagged": 1,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "INSIDE": {
+    "total": 2,
+    "passed": 2,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "Hacker News": {
+    "total": 5,
+    "passed": 0,
+    "flagged": 0,
+    "unverifiable": 5,
+    "error": 0
+   },
+   "Ars Technica": {
+    "total": 3,
+    "passed": 3,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "TechCrunch": {
+    "total": 3,
+    "passed": 3,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   }
+  },
+  "by_body_source": {
+   "full": {
+    "total": 11,
+    "passed": 10,
+    "flagged": 1,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "title": {
+    "total": 5,
+    "passed": 0,
+    "flagged": 0,
+    "unverifiable": 5,
+    "error": 0
+   }
+  },
+  "flags": [
+   {
+    "source": "TechNews",
+    "title": "AI 需求壓縮晶片供應鏈，瑞銀估 2027 年矽晶圓恐漲價高達 40%",
+    "url": "https://finance.technews.tw/2026/09/24/silicon-wafer-prices-to-surge-40-in-2027-as-ai-demand-squeezes-the-chip-supply-chain/",
+    "summary": "受AI需求推升，瑞銀估計2027年矽晶圓價格恐將大幅上漲高達40%。",
+    "body_source": "full",
+    "status": "flagged",
+    "problems": [
+     "LLM 判定沒根據:原文指出40%是促使晶圓廠啟動新擴產所需的漲幅，而非瑞銀預估2027年矽晶圓價格將上漲40%。"
+    ]
+   }
+  ]
  }
 ]
