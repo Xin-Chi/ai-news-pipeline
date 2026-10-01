@@ -88,6 +88,22 @@ JUDGE_SCHEMA = {
     "required": ["verdict", "problem"],
 }
 
+# 字面比對只會做形態上的比對,碰到換句話說、翻譯、中文數字、縮寫就會誤判。
+# 它命中時不直接定罪,而是把「它找不到的那幾個詞」丟給模型再問一次——問題
+# 刻意收窄到那幾個詞,比 JUDGE_SYSTEM 那種「整句有沒有問題」好答得多。
+TOKEN_JUDGE_SYSTEM = (
+    "你是事實查核員。使用者會給你一篇文章的原文、一句根據它寫成的中文摘要,"
+    "以及摘要裡被程式判定為「原文找不到」的幾個詞或數字。\n"
+    "程式只會做字面比對,不認得換句話說。請你判斷這幾個詞是不是其實有原文支持。\n"
+    "以下都算 supported:原文用中文數字而摘要用阿拉伯數字(或相反)、"
+    "翻譯造成的形態差異、縮寫與全名、同義或換句話說、單位或日期的不同寫法。\n"
+    "只有當原文真的沒有這個事實、數字對不上、或摘要把它誇大時,才算 unsupported。\n"
+    "verdict 只能是 supported 或 unsupported。"
+    "unsupported 時,problem 用繁體中文一句話說明哪個詞沒有根據;"
+    "supported 時,problem 用繁體中文一句話說明它對應到原文的哪裡。"
+)
+TOKEN_JUDGE_SCHEMA = JUDGE_SCHEMA
+
 
 # 標點正規化。實測案例:OpenAI 官網把型號寫成 "GPT‑6"(U+2011 非換行連字號),
 # 模型寫摘要時輸出成一般的 "GPT-6",完全相符的比對就找不到,兩則正確的摘要因此被誤標。
@@ -156,6 +172,24 @@ def judge(summary: str, source: str) -> dict:
     return json.loads(raw)
 
 
+def judge_tokens(summary: str, source: str, tokens: list[str]) -> dict:
+    """針對字面比對找不到的那幾個詞,再問模型一次。會真的打一次 API。"""
+    raw = summarize._first_text(summarize._post({
+        "system_instruction": {"parts": [{"text": TOKEN_JUDGE_SYSTEM}]},
+        "contents": [{"parts": [{"text":
+            f"原文:{chr(10)}{source[:summarize.BODY_LIMIT]}{chr(10)}{chr(10)}"
+            f"摘要:{summary}{chr(10)}{chr(10)}"
+            f"程式說原文找不到這幾個:{'、'.join(tokens)}"}]}],
+        "generationConfig": {
+            "temperature": 0,
+            "maxOutputTokens": 200,
+            "responseMimeType": "application/json",
+            "responseSchema": TOKEN_JUDGE_SCHEMA,
+        },
+    }))
+    return json.loads(raw)
+
+
 def check_item(item: dict) -> dict:
     """驗一則,回傳一筆紀錄。status: passed / flagged / unverifiable / error。"""
     rec = {
@@ -195,8 +229,24 @@ def check_item(item: dict) -> dict:
     # 替自己背書。
     missing = literal_check(rec["summary"], rec["title"] + "\n" + source_text)
     if missing:
-        rec["status"] = "flagged"
-        rec["problems"].append(f"原文找不到:{'、'.join(missing)}")
+        # 字面比對不直接定罪:它只認形態,碰到換句話說、翻譯、中文數字、縮寫
+        # 都會誤判(實測 12 天 4 次命中,4 次都是誤報)。改成把「它找不到的那
+        # 幾個詞」丟回模型做針對性覆核,模型也說沒根據才標記。
+        #
+        # 覆核本身失敗就保留字面比對的結果——寧可留下一個待查的標記,也不要
+        # 因為覆核掛掉就把問題靜靜吞掉。
+        try:
+            time.sleep(summarize.RATE_LIMIT_DELAY)
+            v = judge_tokens(rec["summary"], rec["title"] + "\n" + source_text, missing)
+        except Exception as e:
+            v = {"verdict": "unsupported", "problem": f"LLM 覆核失敗({e}),保留字面比對結果"}
+        if v.get("verdict") == "unsupported":
+            rec["status"] = "flagged"
+            rec["problems"].append(
+                f"原文找不到:{'、'.join(missing)}(LLM 覆核同意:{v.get('problem', '')})")
+        else:
+            # 被駁回的也記下來,才知道這一關到底幫上忙還是只在製造雜訊
+            rec["suppressed"] = {"tokens": missing, "reason": v.get("problem", "")}
 
     # 接在逐篇摘要/推薦之後,一樣要守 15 RPM
     time.sleep(summarize.RATE_LIMIT_DELAY)
@@ -234,8 +284,14 @@ def run(items: list, date_str: str) -> dict:
 
     counts = {k: sum(1 for r in records if r["status"] == k)
               for k in ("passed", "flagged", "unverifiable", "error")}
+    # 字面比對命中、但 LLM 覆核駁回的次數。留著是為了日後回答一個問題:
+    # 這一關到底抓到過東西,還是從頭到尾只在製造被駁回的雜訊?
+    suppressed = [r for r in records if r.get("suppressed")]
     print(f"[verify] {len(records)} 則:通過 {counts['passed']}、標記 {counts['flagged']}、"
           f"無從檢查 {counts['unverifiable']}、出錯 {counts['error']}")
+    for r in suppressed:
+        print(f"[verify] 字面比對命中但 LLM 覆核駁回({r['source']}): "
+              f"{'、'.join(r['suppressed']['tokens'])} —— {r['suppressed']['reason']}")
     for r in records:
         if r["status"] == "flagged":
             print(f"[verify] ⚠️ [{r['source']}] {r['title'][:40]} — {'; '.join(r['problems'])}")
@@ -249,6 +305,7 @@ def run(items: list, date_str: str) -> dict:
         # 最想看的一組是 by_body_source:全文摘要的通過率有沒有真的比 RSS 摘要高。
         # 多存這兩組讓一天的紀錄從 215 漲到約 1.8 KB(實測),一年 0.62 MB。
         # 對照:docs/index.html 每天 commit 13.7 KB,所以這仍然是小頭。
+        "literal_suppressed": len(suppressed),
         "by_source": _tally(records, "source"),
         "by_body_source": _tally(records, "body_source"),
         # 只留被標記/出錯的明細,通過的算次數就好——這頁是拿來看問題的,
