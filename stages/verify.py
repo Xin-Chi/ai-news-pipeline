@@ -181,7 +181,19 @@ def check_item(item: dict) -> dict:
         rec["problems"].append("只有標題可用,無從比對")
         return rec
 
-    missing = literal_check(rec["summary"], source_text)
+    # 兩關的比對素材刻意不同,因為它們問的是不同的問題。
+    #
+    # 字面比對問「模型有沒有捏造」。summarize() 餵的是標題 + 內文,所以標題
+    # 是模型的合法輸入,從標題來的事實不算捏造。少了這一塊,只寫在標題的數字
+    # 會被誤判:實測 12 天的 4 筆字面比對標記裡有 3 筆是這樣來的
+    # (53 user images、the SNL treatment、七大科技巨頭,都只出現在標題)。
+    #
+    # judge 問「摘要忠於這篇文章嗎」,基準只能是內文。標題是媒體自己下的,
+    # 可能比內文誇大——09-25 那則 TechNews 的內文說 40% 是「促使晶圓廠啟動
+    # 擴產所需的漲幅」,標題卻寫成「估 2027 年漲價高達 40%」,我們的摘要跟著
+    # 標題走。那筆正是因為 judge 只看內文才抓到的,餵它標題等於讓誇大的標題
+    # 替自己背書。
+    missing = literal_check(rec["summary"], rec["title"] + "\n" + source_text)
     if missing:
         rec["status"] = "flagged"
         rec["problems"].append(f"原文找不到:{'、'.join(missing)}")
