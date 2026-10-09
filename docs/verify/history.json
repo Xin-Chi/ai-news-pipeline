@@ -1538,5 +1538,95 @@
    }
   },
   "flags": []
+ },
+ {
+  "date": "2026-10-09",
+  "updated_at": "2026-10-09 10:30",
+  "total": 16,
+  "passed": 10,
+  "flagged": 1,
+  "unverifiable": 5,
+  "error": 0,
+  "literal_suppressed": 0,
+  "by_source": {
+   "OpenAI Blog": {
+    "total": 3,
+    "passed": 3,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "NVIDIA": {
+    "total": 1,
+    "passed": 1,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "TechNews": {
+    "total": 1,
+    "passed": 1,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "INSIDE": {
+    "total": 2,
+    "passed": 1,
+    "flagged": 1,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "Hacker News": {
+    "total": 5,
+    "passed": 0,
+    "flagged": 0,
+    "unverifiable": 5,
+    "error": 0
+   },
+   "Ars Technica": {
+    "total": 1,
+    "passed": 1,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "TechCrunch": {
+    "total": 3,
+    "passed": 3,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   }
+  },
+  "by_body_source": {
+   "full": {
+    "total": 11,
+    "passed": 10,
+    "flagged": 1,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "title": {
+    "total": 5,
+    "passed": 0,
+    "flagged": 0,
+    "unverifiable": 5,
+    "error": 0
+   }
+  },
+  "flags": [
+   {
+    "source": "INSIDE",
+    "title": "英特爾成應材 50 億美元研發中心創始夥伴，與台積電同列、攻 AI 晶片 3D 封裝",
+    "url": "https://www.inside.com.tw/article/42600-applied-materials-intel-epic-center-ai-chip-packaging",
+    "summary": "英特爾成為應材 50 億美元研發中心創始夥伴，將與台積電等大廠合作，共同加速 AI 晶片 3D 封裝技術開發。",
+    "body_source": "full",
+    "status": "flagged",
+    "problems": [
+     "LLM 判定沒根據:原文中英特爾與台積電雖同為應材研發中心的創始夥伴，但並未提到英特爾會與台積電進行合作開發。"
+    ]
+   }
+  ]
  }
 ]
