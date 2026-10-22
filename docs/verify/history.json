@@ -2546,5 +2546,109 @@
    }
   },
   "flags": []
+ },
+ {
+  "date": "2026-10-22",
+  "updated_at": "2026-10-22 08:55",
+  "total": 25,
+  "passed": 19,
+  "flagged": 1,
+  "unverifiable": 5,
+  "error": 0,
+  "literal_suppressed": 0,
+  "by_source": {
+   "OpenAI Blog": {
+    "total": 5,
+    "passed": 5,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "Hugging Face": {
+    "total": 2,
+    "passed": 2,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "NVIDIA": {
+    "total": 2,
+    "passed": 2,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "iThome": {
+    "total": 1,
+    "passed": 1,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "TechNews": {
+    "total": 2,
+    "passed": 2,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "INSIDE": {
+    "total": 2,
+    "passed": 2,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "Hacker News": {
+    "total": 5,
+    "passed": 0,
+    "flagged": 0,
+    "unverifiable": 5,
+    "error": 0
+   },
+   "Ars Technica": {
+    "total": 3,
+    "passed": 3,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "TechCrunch": {
+    "total": 3,
+    "passed": 2,
+    "flagged": 1,
+    "unverifiable": 0,
+    "error": 0
+   }
+  },
+  "by_body_source": {
+   "full": {
+    "total": 20,
+    "passed": 19,
+    "flagged": 1,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "title": {
+    "total": 5,
+    "passed": 0,
+    "flagged": 0,
+    "unverifiable": 5,
+    "error": 0
+   }
+  },
+  "flags": [
+   {
+    "source": "TechCrunch",
+    "title": "Blackstone’s Jas Khaira says fears over AI-buildout debt are overblown",
+    "url": "https://techcrunch.com/2026/10/21/blackstones-jas-khaira-says-fears-over-ai-buildout-debt-are-overblown/",
+    "summary": "黑Stone高管Jas Khaira表示，市場對AI基礎設施建設債務的擔憂過度了。",
+    "body_source": "full",
+    "status": "flagged",
+    "problems": [
+     "LLM 判定沒根據:原文中Jas Khaira僅分析了市場擔憂的原因，並未明確表示這些擔憂是「過度」的。"
+    ]
+   }
+  ]
  }
 ]
