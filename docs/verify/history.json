@@ -3010,5 +3010,109 @@
     ]
    }
   ]
+ },
+ {
+  "date": "2026-10-28",
+  "updated_at": "2026-10-28 09:38",
+  "total": 20,
+  "passed": 14,
+  "flagged": 1,
+  "unverifiable": 5,
+  "error": 0,
+  "literal_suppressed": 1,
+  "by_source": {
+   "OpenAI Blog": {
+    "total": 2,
+    "passed": 2,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "Google DeepMind": {
+    "total": 1,
+    "passed": 1,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "Hugging Face": {
+    "total": 2,
+    "passed": 2,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "NVIDIA": {
+    "total": 1,
+    "passed": 1,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "iThome": {
+    "total": 1,
+    "passed": 0,
+    "flagged": 1,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "INSIDE": {
+    "total": 2,
+    "passed": 2,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "Hacker News": {
+    "total": 5,
+    "passed": 0,
+    "flagged": 0,
+    "unverifiable": 5,
+    "error": 0
+   },
+   "Ars Technica": {
+    "total": 3,
+    "passed": 3,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "TechCrunch": {
+    "total": 3,
+    "passed": 3,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   }
+  },
+  "by_body_source": {
+   "full": {
+    "total": 15,
+    "passed": 14,
+    "flagged": 1,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "title": {
+    "total": 5,
+    "passed": 0,
+    "flagged": 0,
+    "unverifiable": 5,
+    "error": 0
+   }
+  },
+  "flags": [
+   {
+    "source": "iThome",
+    "title": "微軟向6萬名員工提出自願離職方案，涵蓋全球27%人力",
+    "url": "https://www.ithome.com.tw/news/179960",
+    "summary": "微軟針對全球約6萬名員工推出自願離職方案，旨在調整人力配置以因應AI投資需求。",
+    "body_source": "full",
+    "status": "flagged",
+    "problems": [
+     "LLM 判定沒根據:原文指出該方案僅適用於美國、加拿大、英國及印度的部分員工，並非針對全球員工。"
+    ]
+   }
+  ]
  }
 ]
