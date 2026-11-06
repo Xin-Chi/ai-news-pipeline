@@ -3794,5 +3794,111 @@
     ]
    }
   ]
+ },
+ {
+  "date": "2026-11-06",
+  "updated_at": "2026-11-06 10:50",
+  "total": 24,
+  "passed": 19,
+  "flagged": 0,
+  "unverifiable": 5,
+  "error": 0,
+  "literal_suppressed": 0,
+  "by_source": {
+   "OpenAI Blog": {
+    "total": 4,
+    "passed": 4,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "Google DeepMind": {
+    "total": 1,
+    "passed": 1,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "Hugging Face": {
+    "total": 1,
+    "passed": 1,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "NVIDIA": {
+    "total": 2,
+    "passed": 2,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "iThome": {
+    "total": 1,
+    "passed": 1,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "TechNews": {
+    "total": 2,
+    "passed": 2,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "INSIDE": {
+    "total": 2,
+    "passed": 2,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "Hacker News": {
+    "total": 5,
+    "passed": 0,
+    "flagged": 0,
+    "unverifiable": 5,
+    "error": 0
+   },
+   "Ars Technica": {
+    "total": 3,
+    "passed": 3,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "TechCrunch": {
+    "total": 3,
+    "passed": 3,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   }
+  },
+  "by_body_source": {
+   "rss": {
+    "total": 4,
+    "passed": 4,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "full": {
+    "total": 15,
+    "passed": 15,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "title": {
+    "total": 5,
+    "passed": 0,
+    "flagged": 0,
+    "unverifiable": 5,
+    "error": 0
+   }
+  },
+  "flags": []
  }
 ]
