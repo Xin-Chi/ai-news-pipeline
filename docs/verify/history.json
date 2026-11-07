@@ -3900,5 +3900,120 @@
    }
   },
   "flags": []
+ },
+ {
+  "date": "2026-11-07",
+  "updated_at": "2026-11-07 10:20",
+  "total": 17,
+  "passed": 10,
+  "flagged": 2,
+  "unverifiable": 5,
+  "error": 0,
+  "literal_suppressed": 0,
+  "by_source": {
+   "OpenAI Blog": {
+    "total": 1,
+    "passed": 1,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "Hugging Face": {
+    "total": 1,
+    "passed": 1,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "NVIDIA": {
+    "total": 1,
+    "passed": 0,
+    "flagged": 1,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "TechNews": {
+    "total": 2,
+    "passed": 2,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "INSIDE": {
+    "total": 2,
+    "passed": 1,
+    "flagged": 1,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "Hacker News": {
+    "total": 5,
+    "passed": 0,
+    "flagged": 0,
+    "unverifiable": 5,
+    "error": 0
+   },
+   "Ars Technica": {
+    "total": 2,
+    "passed": 2,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "TechCrunch": {
+    "total": 3,
+    "passed": 3,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   }
+  },
+  "by_body_source": {
+   "rss": {
+    "total": 1,
+    "passed": 1,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "full": {
+    "total": 11,
+    "passed": 9,
+    "flagged": 2,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "title": {
+    "total": 5,
+    "passed": 0,
+    "flagged": 0,
+    "unverifiable": 5,
+    "error": 0
+   }
+  },
+  "flags": [
+   {
+    "source": "NVIDIA",
+    "title": "How NVIDIA Open Source Tools Are Helping Researchers Build Next-Generation 6G Networks",
+    "url": "https://blogs.nvidia.com/blog/telco-open-source-tools-research-6g-networks/",
+    "summary": "How NVIDIA Open Source Tools Are Helping Researchers Build Next-Generation 6G Networks",
+    "body_source": "full",
+    "status": "flagged",
+    "problems": [
+     "摘要與標題完全相同 —— summarize 當時失敗,這是 fallback 不是摘要"
+    ]
+   },
+   {
+    "source": "INSIDE",
+    "title": "Claude 跟進 ChatGPT 推個人理財，連結銀行帳戶就能問錢花去哪",
+    "url": "https://www.inside.com.tw/article/42845-anthropic-claude-personal-finance-plaid-beta",
+    "summary": "Claude 跟進 ChatGPT 推個人理財，連結銀行帳戶就能問錢花去哪",
+    "body_source": "full",
+    "status": "flagged",
+    "problems": [
+     "摘要與標題完全相同 —— summarize 當時失敗,這是 fallback 不是摘要"
+    ]
+   }
+  ]
  }
 ]
