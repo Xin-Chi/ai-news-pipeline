@@ -4122,5 +4122,97 @@
    }
   },
   "flags": []
+ },
+ {
+  "date": "2026-11-10",
+  "updated_at": "2026-11-10 12:19",
+  "total": 22,
+  "passed": 17,
+  "flagged": 0,
+  "unverifiable": 5,
+  "error": 0,
+  "literal_suppressed": 2,
+  "by_source": {
+   "OpenAI Blog": {
+    "total": 4,
+    "passed": 4,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "Hugging Face": {
+    "total": 2,
+    "passed": 2,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "NVIDIA": {
+    "total": 2,
+    "passed": 2,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "TechNews": {
+    "total": 2,
+    "passed": 2,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "INSIDE": {
+    "total": 2,
+    "passed": 2,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "Hacker News": {
+    "total": 5,
+    "passed": 0,
+    "flagged": 0,
+    "unverifiable": 5,
+    "error": 0
+   },
+   "Ars Technica": {
+    "total": 2,
+    "passed": 2,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "TechCrunch": {
+    "total": 3,
+    "passed": 3,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   }
+  },
+  "by_body_source": {
+   "rss": {
+    "total": 4,
+    "passed": 4,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "full": {
+    "total": 13,
+    "passed": 13,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "title": {
+    "total": 5,
+    "passed": 0,
+    "flagged": 0,
+    "unverifiable": 5,
+    "error": 0
+   }
+  },
+  "flags": []
  }
 ]
