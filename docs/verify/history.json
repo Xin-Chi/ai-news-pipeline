@@ -4214,5 +4214,120 @@
    }
   },
   "flags": []
+ },
+ {
+  "date": "2026-11-11",
+  "updated_at": "2026-11-11 10:11",
+  "total": 22,
+  "passed": 15,
+  "flagged": 2,
+  "unverifiable": 5,
+  "error": 0,
+  "literal_suppressed": 0,
+  "by_source": {
+   "OpenAI Blog": {
+    "total": 5,
+    "passed": 3,
+    "flagged": 2,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "Google DeepMind": {
+    "total": 2,
+    "passed": 2,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "NVIDIA": {
+    "total": 1,
+    "passed": 1,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "iThome": {
+    "total": 1,
+    "passed": 1,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "INSIDE": {
+    "total": 2,
+    "passed": 2,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "Hacker News": {
+    "total": 5,
+    "passed": 0,
+    "flagged": 0,
+    "unverifiable": 5,
+    "error": 0
+   },
+   "Ars Technica": {
+    "total": 3,
+    "passed": 3,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "TechCrunch": {
+    "total": 3,
+    "passed": 3,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   }
+  },
+  "by_body_source": {
+   "rss": {
+    "total": 5,
+    "passed": 3,
+    "flagged": 2,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "full": {
+    "total": 12,
+    "passed": 12,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "title": {
+    "total": 5,
+    "passed": 0,
+    "flagged": 0,
+    "unverifiable": 5,
+    "error": 0
+   }
+  },
+  "flags": [
+   {
+    "source": "OpenAI Blog",
+    "title": "Gilbert + Tobin rethinks the business of law with AI",
+    "url": "https://openai.com/index/gilbert-tobin-sam-nickless",
+    "summary": "Gilbert + Tobin 執行長 Sam Nickless 探討如何透過 AI 重塑法律業務模式。",
+    "body_source": "rss",
+    "status": "flagged",
+    "problems": [
+     "LLM 判定沒根據:原文僅提到這是一場與 Sam Nickless 的對談，並未提及對談內容涉及 AI 或重塑法律業務模式。"
+    ]
+   },
+   {
+    "source": "OpenAI Blog",
+    "title": "Closing the AI guidance gap in education",
+    "url": "https://openai.com/index/closing-ai-guidance-gap-education",
+    "summary": "ThinkYoung 研究與 OpenAI 合作，探討如何透過 AI 素養與教學支援，縮短教育領域的 AI 應用落差。",
+    "body_source": "rss",
+    "status": "flagged",
+    "problems": [
+     "LLM 判定沒根據:原文並未提到「縮短教育領域的 AI 應用落差」這一目標或結論。"
+    ]
+   }
+  ]
  }
 ]
