@@ -4329,5 +4329,131 @@
     ]
    }
   ]
+ },
+ {
+  "date": "2026-11-12",
+  "updated_at": "2026-11-12 11:19",
+  "total": 19,
+  "passed": 11,
+  "flagged": 3,
+  "unverifiable": 5,
+  "error": 0,
+  "literal_suppressed": 1,
+  "by_source": {
+   "OpenAI Blog": {
+    "total": 2,
+    "passed": 1,
+    "flagged": 1,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "Google DeepMind": {
+    "total": 1,
+    "passed": 0,
+    "flagged": 1,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "Hugging Face": {
+    "total": 1,
+    "passed": 1,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "TechNews": {
+    "total": 2,
+    "passed": 1,
+    "flagged": 1,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "INSIDE": {
+    "total": 2,
+    "passed": 2,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "Hacker News": {
+    "total": 5,
+    "passed": 0,
+    "flagged": 0,
+    "unverifiable": 5,
+    "error": 0
+   },
+   "Ars Technica": {
+    "total": 3,
+    "passed": 3,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "TechCrunch": {
+    "total": 3,
+    "passed": 3,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   }
+  },
+  "by_body_source": {
+   "rss": {
+    "total": 2,
+    "passed": 1,
+    "flagged": 1,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "full": {
+    "total": 12,
+    "passed": 10,
+    "flagged": 2,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "title": {
+    "total": 5,
+    "passed": 0,
+    "flagged": 0,
+    "unverifiable": 5,
+    "error": 0
+   }
+  },
+  "flags": [
+   {
+    "source": "OpenAI Blog",
+    "title": "Gilbert + Tobin rethinks the business of law with AI",
+    "url": "https://openai.com/index/gilbert-tobin-sam-nickless",
+    "summary": "Gilbert + Tobin 執行長 Sam Nickless 探討如何透過 AI 重塑法律業務模式。",
+    "body_source": "rss",
+    "status": "flagged",
+    "problems": [
+     "LLM 判定沒根據:原文僅提到這是一場與 Sam Nickless 的對談，並未提及對談內容涉及 AI 或重塑法律業務模式。"
+    ]
+   },
+   {
+    "source": "Google DeepMind",
+    "title": "AlphaGenome 2: Deciphering how cells read DNA to better understand disease",
+    "url": "https://deepmind.google/blog/alphagenome-2-deciphering-how-cells-read-dna-to-better-understand-disease/",
+    "summary": "AlphaGenome 2 透過解析細胞讀取 DNA 的機制，以利深入了解疾病。",
+    "body_source": "full",
+    "status": "flagged",
+    "problems": [
+     "LLM 判定沒根據:原文僅為致謝名單，並未提及 AlphaGenome 2 的具體研究內容或其解析 DNA 機制的相關資訊。"
+    ]
+   },
+   {
+    "source": "TechNews",
+    "title": "費半狂飆領軍 AI！台股叩關 43,000，內資主導輪動核心",
+    "url": "https://finance.technews.tw/2026/11/12/sox-surges-leading-ai-taiwan-stocks-challenge-43000-domestic-capital-drives-sector-rotation/",
+    "summary": "費半領軍台股挑戰43,000點，內資主導盤面，需留意高檔震盪與匯率波動風險。",
+    "body_source": "full",
+    "status": "flagged",
+    "problems": [
+     "LLM 判定沒根據:原文並未提及台股目標挑戰43,000點的相關資訊。"
+    ]
+   }
+  ]
  }
 ]
