@@ -4455,5 +4455,120 @@
     ]
    }
   ]
+ },
+ {
+  "date": "2026-11-13",
+  "updated_at": "2026-11-13 10:55",
+  "total": 20,
+  "passed": 13,
+  "flagged": 2,
+  "unverifiable": 5,
+  "error": 0,
+  "literal_suppressed": 0,
+  "by_source": {
+   "OpenAI Blog": {
+    "total": 3,
+    "passed": 1,
+    "flagged": 2,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "Google DeepMind": {
+    "total": 1,
+    "passed": 1,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "Hugging Face": {
+    "total": 1,
+    "passed": 1,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "TechNews": {
+    "total": 2,
+    "passed": 2,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "INSIDE": {
+    "total": 2,
+    "passed": 2,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "Hacker News": {
+    "total": 5,
+    "passed": 0,
+    "flagged": 0,
+    "unverifiable": 5,
+    "error": 0
+   },
+   "Ars Technica": {
+    "total": 3,
+    "passed": 3,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "TechCrunch": {
+    "total": 3,
+    "passed": 3,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   }
+  },
+  "by_body_source": {
+   "rss": {
+    "total": 3,
+    "passed": 1,
+    "flagged": 2,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "full": {
+    "total": 12,
+    "passed": 12,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "title": {
+    "total": 5,
+    "passed": 0,
+    "flagged": 0,
+    "unverifiable": 5,
+    "error": 0
+   }
+  },
+  "flags": [
+   {
+    "source": "OpenAI Blog",
+    "title": "How Amplitude ships product improvements in 1–2 days with OpenAI",
+    "url": "https://openai.com/business/customer-stories/amplitude",
+    "summary": "Amplitude 運用 OpenAI 模型開發 Wave 代理，協助團隊在 1 至 2 天內完成產品開發與優化。",
+    "body_source": "rss",
+    "status": "flagged",
+    "problems": [
+     "LLM 判定沒根據:原文並未提及 Wave 代理協助團隊完成開發與優化的具體時間為 1 至 2 天。"
+    ]
+   },
+   {
+    "source": "OpenAI Blog",
+    "title": "Gondola doubles revenue as its team builds more with Codex",
+    "url": "https://openai.com/business/customer-stories/gondola",
+    "summary": "Gondola 透過 Codex 與 ChatGPT 提升工程效率，成功使營收翻倍。",
+    "body_source": "rss",
+    "status": "flagged",
+    "problems": [
+     "LLM 判定沒根據:原文僅提及 Codex 提升了 50% 的產出，摘要卻將其誇大並改成「成功使營收翻倍」。"
+    ]
+   }
+  ]
  }
 ]
