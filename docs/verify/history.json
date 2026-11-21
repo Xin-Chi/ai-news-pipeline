@@ -5149,5 +5149,95 @@
    }
   },
   "flags": []
+ },
+ {
+  "date": "2026-11-21",
+  "updated_at": "2026-11-21 11:25",
+  "total": 14,
+  "passed": 8,
+  "flagged": 1,
+  "unverifiable": 5,
+  "error": 0,
+  "literal_suppressed": 0,
+  "by_source": {
+   "OpenAI Blog": {
+    "total": 1,
+    "passed": 1,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "iThome": {
+    "total": 2,
+    "passed": 2,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "TechNews": {
+    "total": 1,
+    "passed": 0,
+    "flagged": 1,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "INSIDE": {
+    "total": 2,
+    "passed": 2,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "Hacker News": {
+    "total": 5,
+    "passed": 0,
+    "flagged": 0,
+    "unverifiable": 5,
+    "error": 0
+   },
+   "Ars Technica": {
+    "total": 3,
+    "passed": 3,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   }
+  },
+  "by_body_source": {
+   "full": {
+    "total": 8,
+    "passed": 8,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "rss": {
+    "total": 1,
+    "passed": 0,
+    "flagged": 1,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "title": {
+    "total": 5,
+    "passed": 0,
+    "flagged": 0,
+    "unverifiable": 5,
+    "error": 0
+   }
+  },
+  "flags": [
+   {
+    "source": "TechNews",
+    "title": "10 月外銷訂單 1,238 億美元續創高，年增 78.3% 連 21 紅",
+    "url": "https://finance.technews.tw/2026/11/20/october-export-orders-new-record-123-8-billion-usd-up-78-3-percent-21-consecutive-months/",
+    "summary": "受惠 AI 需求強勁，10 月外銷訂單達 1,238 億美元，創單月新高並連 21 紅。",
+    "body_source": "rss",
+    "status": "flagged",
+    "problems": [
+     "LLM 判定沒根據:原文並未提及外銷訂單連21紅的相關資訊。"
+    ]
+   }
+  ]
  }
 ]
