@@ -5625,5 +5625,74 @@
    }
   },
   "flags": []
+ },
+ {
+  "date": "2026-11-28",
+  "updated_at": "2026-11-28 12:09",
+  "total": 7,
+  "passed": 1,
+  "flagged": 1,
+  "unverifiable": 5,
+  "error": 0,
+  "literal_suppressed": 0,
+  "by_source": {
+   "TechNews": {
+    "total": 1,
+    "passed": 0,
+    "flagged": 1,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "INSIDE": {
+    "total": 1,
+    "passed": 1,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "Hacker News": {
+    "total": 5,
+    "passed": 0,
+    "flagged": 0,
+    "unverifiable": 5,
+    "error": 0
+   }
+  },
+  "by_body_source": {
+   "rss": {
+    "total": 1,
+    "passed": 0,
+    "flagged": 1,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "full": {
+    "total": 1,
+    "passed": 1,
+    "flagged": 0,
+    "unverifiable": 0,
+    "error": 0
+   },
+   "title": {
+    "total": 5,
+    "passed": 0,
+    "flagged": 0,
+    "unverifiable": 5,
+    "error": 0
+   }
+  },
+  "flags": [
+   {
+    "source": "TechNews",
+    "title": "10 月景氣燈號連 11 紅，刷新史上最長紅燈紀錄",
+    "url": "https://finance.technews.tw/2026/11/27/october-economic-indicator-stays-red-for-11th-straight-month/",
+    "summary": "受惠AI需求強勁，10月景氣燈號續亮紅燈，刷新史上最長紀錄。",
+    "body_source": "rss",
+    "status": "flagged",
+    "problems": [
+     "LLM 判定沒根據:原文並未提及10月景氣燈號刷新史上最長紀錄的相關資訊。"
+    ]
+   }
+  ]
  }
 ]
